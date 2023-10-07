@@ -10,12 +10,12 @@
 
 ## Tech Stack
 
--   **`Figma`** - UX/UI
--   **`Push Protocol`** - Meeting notifications
--   **`Wormhole`** - Communication
--   **`Filecoin`** - Meeting data
--   **`Cometh`** - Biometric authentication
--   **`Mantle`** - Smart contracts
--   **`Sismo`** - User data
--   **`The Graph`** - DApp subgraph
--   **`Next.js 13 (TypeScript)`** Frontend
+-   [**`Figma`**](https://www.figma.com) - UX/UI
+-   [**`Push Protocol`**](https://push.org) - Meeting notifications
+-   [**`XMTP`**](https://xmtp.org/built-with-xmtp) - Communication
+-   [**`Filecoin`**](https://filecoin.io) - Meeting data
+-   [**`Cometh`**](https://cometh.io/) - Biometric authentication
+-   [**`Mantle`**](https://www.mantle.xyz) - Network and smart contracts
+-   [**`Sismo`**](https://docs.sismo.io) - User data
+-   [**`The Graph`**](https://thegraph.com) - DApp subgraph
+-   [**`Next.js`**](https://nextjs.org) Frontend
