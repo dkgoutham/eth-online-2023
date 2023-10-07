@@ -1,6 +1,6 @@
 # ETHOnline 2023
 
-![ETHOnline Logo](./_docs/img/eth-global-logo-small.png)
+<img src="./_docs/img/eth-global-logo-small.png" alt="drawing" width="50"/>
 
 ## Team
 
