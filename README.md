@@ -1,6 +1,9 @@
-# ETHOnline 2023
+# ETHOnline 2023 - The Session
 
-<img src="./_docs/img/eth-global-logo-small.png" alt="drawing" width="50"/>
+<img src="./_docs/img/eth-global-logo.svg" alt="drawing" width="50"/>
+<br>
+<br>
+<img src="./_docs/img/the_session_logo.svg" alt="drawing" width="200"/>
 
 ## Team
 
