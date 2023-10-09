@@ -19,3 +19,9 @@
 -   [**`Sismo`**](https://docs.sismo.io) - User data
 -   [**`The Graph`**](https://thegraph.com) - DApp subgraph
 -   [**`Next.js`**](https://nextjs.org) Frontend
+
+## Flowcharts
+
+#### DApp
+
+![DApp Flowchart](./_docs/img/flowchart-dapp.svg)
