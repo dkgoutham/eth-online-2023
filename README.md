@@ -1,8 +1,9 @@
 # ETHOnline 2023 - The Session
 
+<div style="display: flex; align-items: center; gap: 24px;">
 <img src="./_docs/img/eth-global-logo.svg" alt="drawing" width="50"/>
-<br>
 <img src="./_docs/img/the_session_logo.svg" alt="drawing" width="200"/>
+</div>
 
 ## Team
 
