@@ -2,7 +2,6 @@
 
 <img src="./_docs/img/eth-global-logo.svg" alt="drawing" width="50"/>
 <br>
-<br>
 <img src="./_docs/img/the_session_logo.svg" alt="drawing" width="200"/>
 
 ## Team
