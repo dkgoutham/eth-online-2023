@@ -25,3 +25,7 @@
 #### DApp
 
 ![DApp Flowchart](./_docs/img/flowchart-dapp.svg)
+
+## Project
+
+-   [DApp](./the-session-dapp/)
