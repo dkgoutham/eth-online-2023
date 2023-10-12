@@ -6,6 +6,7 @@
   --foreground: #f2622e;
   --background: #fff;
   --accent: #034aa6;
+  --accent-hover: #f2622e;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,6 +14,7 @@
     --foreground: #fff;
     --background: #f2622e;
     --accent: #034aa6;
+    --accent-hover: #fff;
   }
 }
 
