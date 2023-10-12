@@ -18,7 +18,7 @@
 -   [**`Mantle`**](https://www.mantle.xyz) - Network and smart contracts
 -   [**`Sismo`**](https://docs.sismo.io) - User data
 -   [**`The Graph`**](https://thegraph.com) - DApp subgraph
--   [**`Next.js`**](https://nextjs.org) Frontend
+-   [**`Next.js`**](https://nextjs.org) - Frontend
 
 ## Flowcharts
 
@@ -28,4 +28,5 @@
 
 ## Project
 
+-   [Figma](https://www.figma.com/file/U2QU9ehAqlHjBB9K2CSKFx/the_session?type=design&node-id=0%3A1&mode=design&t=GLPWnMOzHqAa4QVT-1)
 -   [DApp](./the-session-dapp/)
