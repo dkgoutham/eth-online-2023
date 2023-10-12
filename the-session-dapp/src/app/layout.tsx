@@ -1,4 +1,5 @@
 import './globals.css'
+import { ReactNode } from 'react'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Favicon from '@public/favicon.ico'
@@ -11,11 +12,7 @@ export const metadata: Metadata = {
   icons: [{ rel: 'icon', url: Favicon.src }],
 }
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang='en' className={inter.className}>
       <body>{children}</body>
