@@ -11,7 +11,7 @@ export default function Button({ type, children, onClick }: IProps) {
     <button
       type={type || 'button'}
       onClick={onClick}
-      className='rounded-full bg-[--accent] px-8 py-1 text-[1.25rem] font-bold text-white transition-colors hover:bg-[--accent-hover] hover:text-[--accent] active:bg-[--accent-active] active:text-[--accent]'
+      className='rounded-full bg-[--accent] px-8 py-1 text-[1.25rem] font-bold text-white transition-colors hover:bg-[--accent-hover] hover:text-[--accent] active:bg-[--accent-hover] active:text-[--accent]'
     >
       {children}
     </button>
