@@ -22,7 +22,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground: var(--white);
-    --background: #034aa6;
+    --background: var(--black);
     --accent: var(--orange);
     --accent-hover: var(--white);
   }
