@@ -1,0 +1,13 @@
+*,
+body {
+  background-color: var(--white);
+  color: var(--black);
+}
+
+@media (prefers-color-scheme: dark) {
+  *,
+  body {
+    background-color: var(--blue);
+    color: var(--white);
+  }
+}

@@ -9,18 +9,22 @@
 }
 
 :root {
-  --foreground: #f2622e;
-  --background: #fff;
+  --white: #fff;
+  --orange: #f2622e;
+  --blue: #034aa6;
+  --black: #222;
+  --foreground: var(--white);
+  --background: var(--orange);
   --accent: #034aa6;
-  --accent-hover: #f2622e;
+  --accent-hover: var(--orange);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground: #fff;
-    --background: #f2622e;
-    --accent: #034aa6;
-    --accent-hover: #fff;
+    --foreground: var(--white);
+    --background: #034aa6;
+    --accent: var(--orange);
+    --accent-hover: var(--white);
   }
 }
 
