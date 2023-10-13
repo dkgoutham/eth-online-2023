@@ -9,7 +9,7 @@ interface IProps {
 export default function Nav({ user }: IProps) {
   return (
     <nav>
-      <ul className='mx-auto mt-10 h-[3rem] w-screen max-w-[1080px] rounded-full border-[1px] border-solid border-[--black] px-[4rem] py-[0.75rem] dark:border-[--white]'>
+      <ul className='mx-auto mt-10 flex h-[3rem] w-screen max-w-[1080px] items-center justify-between rounded-full border-[1px] border-solid border-[--black] px-[4rem] dark:border-[--white]'>
         <SSLogo />
         <UserActions user={user} />
       </ul>

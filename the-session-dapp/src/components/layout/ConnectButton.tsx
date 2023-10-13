@@ -10,7 +10,7 @@ export default function ConnectButton() {
 
   const connectHandler = () => {
     // TODO Add connect logic
-    if (isConnected) push('/user')
+    if (isConnected) push('/1')
   }
   return (
     <Button onClick={connectHandler}>

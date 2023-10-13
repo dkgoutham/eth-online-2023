@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation'
 import { getUser } from '@/services'
 import { User } from '@/model'
+import H1 from '@/components/ui/H1'
 import Nav from '@/components/layout/Nav/Nav'
 import MainWrapper from '@/components/wrappers/MainWrapper'
 
@@ -11,6 +12,7 @@ export default async function UserLanding({
 }) {
   let user: User
   try {
+    // TODO Add auth
     user = await getUser(params.userID)
   } catch (err) {
     notFound()
@@ -19,7 +21,7 @@ export default async function UserLanding({
     <>
       <Nav user={user} />
       <MainWrapper>
-        <h1>My user: {params.userID}</h1>
+        <H1>find your group {user.username}</H1>
       </MainWrapper>
     </>
   )
