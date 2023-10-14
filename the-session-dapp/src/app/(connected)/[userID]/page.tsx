@@ -1,19 +1,21 @@
 import { notFound } from 'next/navigation'
-import { getUser } from '@/services'
-import { User } from '@/model'
+import { getGroups, getUser } from '@/services'
+import { User, Group } from '@/model'
 import H1 from '@/components/ui/H1'
 import Nav from '@/components/layout/Nav'
 import FindGroupWrapper from '@/components/wrappers/FindGroupWrapper'
+import GroupTags from '@/components/layout/GroupTags'
 
 export default async function UserLanding({
   params,
 }: {
   params: { userID: string }
 }) {
-  let user: User
+  let user: User, groups: Group[]
   try {
     // TODO Add auth
     user = await getUser(params.userID)
+    groups = await getGroups(25)
   } catch (err) {
     notFound()
   }
@@ -22,6 +24,7 @@ export default async function UserLanding({
       <Nav user={user} />
       <FindGroupWrapper>
         <H1>find your group</H1>
+        <GroupTags groups={groups} />
       </FindGroupWrapper>
     </>
   )
