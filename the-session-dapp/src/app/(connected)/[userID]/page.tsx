@@ -2,8 +2,8 @@ import { notFound } from 'next/navigation'
 import { getUser } from '@/services'
 import { User } from '@/model'
 import H1 from '@/components/ui/H1'
-import Nav from '@/components/layout/Nav/Nav'
-import MainWrapper from '@/components/wrappers/MainWrapper'
+import Nav from '@/components/layout/Nav'
+import FindGroupWrapper from '@/components/wrappers/FindGroupWrapper'
 
 export default async function UserLanding({
   params,
@@ -20,9 +20,9 @@ export default async function UserLanding({
   return (
     <>
       <Nav user={user} />
-      <MainWrapper>
-        <H1>find your group {user.username}</H1>
-      </MainWrapper>
+      <FindGroupWrapper>
+        <H1>find your group</H1>
+      </FindGroupWrapper>
     </>
   )
 }
