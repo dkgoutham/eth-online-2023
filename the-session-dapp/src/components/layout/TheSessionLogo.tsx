@@ -1,6 +1,5 @@
 'use client'
 
-import { useDarkMode } from '@/hooks'
 import Logo from '@/assets/svg/the-session-logo.svg'
 
 export default function TheSessionLogo() {
