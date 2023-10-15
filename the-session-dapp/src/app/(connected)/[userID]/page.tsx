@@ -5,6 +5,7 @@ import H1 from '@/components/ui/H1'
 import Nav from '@/components/layout/Nav'
 import FindGroupWrapper from '@/components/wrappers/FindGroupWrapper'
 import GroupTags from '@/components/layout/GroupTags'
+import HeaderWrapper from '@/components/wrappers/HeaderWrapper'
 
 export default async function UserLanding({
   params,
@@ -21,7 +22,9 @@ export default async function UserLanding({
   }
   return (
     <>
-      <Nav user={user} />
+      <HeaderWrapper>
+        <Nav user={user} />
+      </HeaderWrapper>
       <FindGroupWrapper>
         <H1>find your group</H1>
         <GroupTags groups={groups} />

@@ -4,7 +4,7 @@ interface IProps {
 
 export default function Avatar({ src }: IProps) {
   return (
-    <span className='rounded-full dark:border-[--orange] relative flex h-8 w-8 items-center justify-center overflow-hidden border-[1px] border-[--blue] bg-[--blue]'>
+    <span className='relative flex h-8 w-8 items-center justify-center overflow-hidden rounded-full border-[1px] border-[--blue] bg-[--blue] dark:border-[--orange] dark:bg-[--orange]'>
       {src && (
         <img
           className='h-full w-full object-contain'

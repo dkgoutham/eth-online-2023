@@ -6,6 +6,7 @@ interface IProps {
 }
 
 export default function GroupTags({ groups }: IProps) {
+  // TODO Add filtering and make it expandable
   return (
     <ul className='flex w-full flex-wrap items-center justify-center gap-4'>
       {groups.map((group) => (

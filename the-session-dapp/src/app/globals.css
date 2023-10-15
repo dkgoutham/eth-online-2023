@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 @layer components {
   .text-balance {
     text-wrap: balance;
@@ -15,7 +14,7 @@
   --black: #222;
   --foreground: var(--white);
   --background: var(--orange);
-  --accent: #034aa6;
+  --accent: var(--blue);
   --accent-hover: var(--orange);
 }
 
@@ -31,4 +30,10 @@
 body {
   background-color: var(--background);
   color: var(--foreground);
+}
+
+header,
+main,
+section {
+  max-width: 1080px;
 }
