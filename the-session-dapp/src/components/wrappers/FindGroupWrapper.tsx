@@ -1,9 +1,6 @@
 import PillWrapper from './PillWrapper'
 import { TAGLINE } from '@/config'
-
-interface IProps {
-  children: React.ReactNode
-}
+import { IContainerProps as IProps } from '@/model'
 
 export default function FindGroupWrapper({ children }: IProps) {
   return (

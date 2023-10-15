@@ -1,6 +1,4 @@
-interface IProps {
-  children: React.ReactNode
-}
+import { IContainerProps as IProps } from '@/model'
 
 export default function HeaderWrapper({ children }: IProps) {
   return (

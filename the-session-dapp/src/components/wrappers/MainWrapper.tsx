@@ -1,11 +1,9 @@
-interface IProps {
-  children: React.ReactNode
-}
+import { IContainerProps as IProps } from '@/model'
 
-export default function MainWrapper({ children }: IProps) {
-  return (
-    <main className='flex-col items-center justify-between px-12 pb-24 pt-12'>
-      {children}
-    </main>
-  )
+export default function MainWrapper({ className, children }: IProps) {
+  const mainClass =
+    `flex flex-col items-center justify-between px-8 pb-16 pt-8 ${
+      className || ''
+    }`.trim()
+  return <main className={mainClass}>{children}</main>
 }
