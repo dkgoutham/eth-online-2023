@@ -2,10 +2,10 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-import { Group } from '@/model'
+import { GroupTopic } from '@/model'
 
 interface IProps {
-  group: Group
+  topic: GroupTopic
 }
 
 const classes = {
@@ -14,32 +14,30 @@ const classes = {
   selected: 'bg-[--orange] border-[--orange] text-[--white]',
 }
 
-export default function Tag({ group }: IProps) {
+export default function Tag({ topic: { slug, name: topicName } }: IProps) {
   const [stateClass, setStateClass] = useState<string>(classes.default)
   const router = useRouter()
   const pathname = usePathname()
   const searchParams = useSearchParams()!
   const filterGroups = useCallback(() => {
-    const params = new URLSearchParams('group')
-    params.delete('group')
-    params.set('group', group.slug)
+    const params = new URLSearchParams('topic')
+    params.delete('topic')
+    params.set('topic', slug)
     router.push(`${pathname}?${params.toString()}`)
-  }, [group.slug, pathname, router])
+  }, [slug, pathname, router])
 
   useEffect(() => {
     setStateClass(
-      searchParams.get('group') === group.slug
-        ? classes.selected
-        : classes.default
+      searchParams.get('topic') === slug ? classes.selected : classes.default
     )
-  }, [group.slug, searchParams])
+  }, [slug, searchParams])
 
   return (
     <button
       className={`rounded-full border-[1px] px-8 py-2 text-sm transition-colors ${stateClass}`.trim()}
       onClick={filterGroups}
     >
-      {group.name}
+      {topicName}
     </button>
   )
 }

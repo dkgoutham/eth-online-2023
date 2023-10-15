@@ -7,13 +7,19 @@ interface IProps extends IContainerProps {
   flat?: boolean
 }
 
-export default function PillWrapper(props: IProps) {
-  const { bgColor = 'black', bgImage, flat = true, children } = props
+export default function PillWrapper({
+  bgColor = 'black',
+  bgImage,
+  flat = true,
+  className,
+  children,
+}: IProps) {
   const classes = [
     'flex items-end py-20 px-8 rounded-full',
     'h-full min-h-[300px] w-full w-[200px]',
     `border-[1px] border-[--black] dark:border-[--white] `,
     `bg-[--${bgColor}] bg-center bg-no-repeat bg-center bg-cover`,
+    className || '',
   ]
   return (
     <div

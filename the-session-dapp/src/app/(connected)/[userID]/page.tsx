@@ -1,22 +1,24 @@
 import { notFound } from 'next/navigation'
-import { getGroups, getUser } from '@/services'
-import { User, Group } from '@/model'
+import { getTopics, getUser, getGroups } from '@/services'
+import { User, GroupTopic, Group } from '@/model'
 import H1 from '@/components/ui/H1'
 import Nav from '@/components/layout/Nav'
-import FindGroupWrapper from '@/components/wrappers/FindGroupWrapper'
-import GroupTags from '@/components/layout/GroupTags'
+import RightPillWrapper from '@/components/wrappers/RightPillWrapper'
+import TopicTags from '@/components/layout/TopicTags'
 import HeaderWrapper from '@/components/wrappers/HeaderWrapper'
+import GroupsSlider from '@/components/layout/GroupsSlider'
 
 export default async function UserLanding({
   params,
 }: {
   params: { userID: string }
 }) {
-  let user: User, groups: Group[]
+  let user: User, topics: GroupTopic[], groups: Group[]
   try {
     // TODO Add auth
     user = await getUser(params.userID)
-    groups = await getGroups(25)
+    topics = await getTopics(13)
+    groups = await getGroups(6)
   } catch (err) {
     notFound()
   }
@@ -25,10 +27,11 @@ export default async function UserLanding({
       <HeaderWrapper>
         <Nav user={user} />
       </HeaderWrapper>
-      <FindGroupWrapper>
+      <RightPillWrapper>
         <H1>find your group</H1>
-        <GroupTags groups={groups} />
-      </FindGroupWrapper>
+        <TopicTags topics={topics} />
+        <GroupsSlider groups={groups} />
+      </RightPillWrapper>
     </>
   )
 }

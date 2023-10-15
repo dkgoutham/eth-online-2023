@@ -1,7 +1,8 @@
 {
   "extends": ["next", "prettier"],
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "unused-imports"],
   "rules": {
-    "@next/next/no-img-element": "off"
+    "@next/next/no-img-element": "off",
+    "unused-imports/no-unused-imports": "error"
   }
 }
