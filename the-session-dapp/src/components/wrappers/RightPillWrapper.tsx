@@ -11,7 +11,7 @@ export default function RightPillWrapper({ pillQuote, children }: IProps) {
       <aside className='hidden w-1/3 basis-1/3 sm:block'>
         <GroupPill text={pillQuote} />
       </aside>
-      <section className='flex w-2/3 basis-full flex-col gap-8 sm:basis-2/3	'>
+      <section className='flex w-2/3 basis-full flex-col gap-8 sm:basis-2/3'>
         {children}
       </section>
     </main>
