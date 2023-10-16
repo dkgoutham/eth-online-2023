@@ -14,8 +14,8 @@ export default function GroupsSlider({ groups }: IProps) {
   return (
     <section className='relative'>
       <div className={classes.join(' ').trim()}>
-        {groups.map((group) => (
-          <GroupDetailPill key={group.id} group={group} />
+        {groups.map((group, i: number) => (
+          <GroupDetailPill bgColor={i % 2 === 0 ? 'orange' : 'black'} key={group.id} group={group} />
         ))}
       </div>
     </section>
