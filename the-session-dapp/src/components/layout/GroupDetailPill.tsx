@@ -14,15 +14,22 @@ export default function GroupDetailPill({
   return (
     <>
       <PillWrapper
-        className='relative flex h-full w-52 flex-col gap-2'
+        className='relative flex h-full w-52 flex-col gap-2 text-left justify-end'
         bgColor={bgColor}
         bgImage={image || undefined}
       >
-        <p>{topic}</p>
-        <h2>{quote}</h2>
-        <time>{schedule ? `${schedule.day} ${schedule.hour}` : 'TBD'}</time>
-        {peers > 0 && <p>{peers} peers</p>}
-        <Link href={`/meetings/${id}`}>jump in</Link>
+        <p className='w-full text-sm leading-3'>{topic}</p>
+        <h2 className='w-full text-xl leading-5 font-bold text-balance'>{quote}</h2>
+        <time className='w-full text-sm leading-3'>
+          {schedule ? `${schedule.day} ${schedule.hour}` : 'TBD'}
+        </time>
+        {peers > 0 && <p className='w-full text-sm leading-3'>{peers} peers</p>}
+        <Link
+          className='absolute bottom-0 right-0 flex h-20 w-20 items-center justify-center rounded-full bg-[--blue] font-bold'
+          href={`/meetings/${id}`}
+        >
+          join
+        </Link>
       </PillWrapper>
     </>
   )

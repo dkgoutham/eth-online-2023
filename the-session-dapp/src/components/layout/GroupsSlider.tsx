@@ -15,7 +15,7 @@ export default function GroupsSlider({ groups }: IProps) {
     'content-[""]',
   ]
   const classes = [
-    'px-24 w-ful grid grid-flow-col auto-cols-auto gap-8 overflow-scroll',
+    'px-24 grid grid-flow-col auto-cols-auto gap-8 overflow-scroll',
     ...['before', 'after'].map((grad) => {
       return [...gradRules, grad === 'before' ? 'left-0' : 'right-0']
         .map((rule) => `${grad}:${rule}`)
@@ -27,7 +27,7 @@ export default function GroupsSlider({ groups }: IProps) {
     'dark:after:bg-[linear-gradient(to_right,var(--black-0),var(--black))]',
   ]
   return (
-    <section className='relative'>
+    <div className='relative'>
       <div className={classes.join(' ').trim()}>
         {groups.map((group, i: number) => (
           <GroupDetailPill
@@ -37,6 +37,6 @@ export default function GroupsSlider({ groups }: IProps) {
           />
         ))}
       </div>
-    </section>
+    </div>
   )
 }
