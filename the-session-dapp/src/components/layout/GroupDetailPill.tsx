@@ -14,7 +14,7 @@ export default function GroupDetailPill({
   return (
     <>
       <PillWrapper
-        className='relative flex h-96 w-48 flex-col gap-2'
+        className='relative flex h-full w-52 flex-col gap-2'
         bgColor={bgColor}
         bgImage={image || undefined}
       >

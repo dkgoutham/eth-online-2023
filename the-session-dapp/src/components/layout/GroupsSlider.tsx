@@ -6,16 +6,35 @@ interface IProps {
 }
 
 export default function GroupsSlider({ groups }: IProps) {
+  const gradRules = [
+    'absolute',
+    'top-0',
+    'z-[2]',
+    'h-full',
+    'w-[100px]',
+    'content-[""]',
+  ]
   const classes = [
-    'flex gap-8 overflow-scroll before:absolute before:left-0 before:top-0 before:z-[2] before:h-full before:w-[100px] before:content-[""] after:absolute after:right-0 after:top-0 after:z-[2] after:h-full after:w-[100px] after:content-[""]',
-    'before:bg-[linear-gradient(to_right,var(--white),var(--white-0))] after:-scale-x-100 after:bg-[linear-gradient(to_right,var(--white),var(--white-0))]',
-    'dark:before:bg-[linear-gradient(to_right,var(--black),var(--black-0))] dark:after:-scale-x-100 after:bg-[linear-gradient(to_right,var(--black),var(--black-0))]',
+    'px-24 w-ful grid grid-flow-col auto-cols-auto gap-8 overflow-scroll',
+    ...['before', 'after'].map((grad) => {
+      return [...gradRules, grad === 'before' ? 'left-0' : 'right-0']
+        .map((rule) => `${grad}:${rule}`)
+        .join(' ')
+    }),
+    'before:bg-[linear-gradient(to_right,var(--white),var(--white-0))]',
+    'dark:before:bg-[linear-gradient(to_right,var(--black),var(--black-0))]',
+    'after:bg-[linear-gradient(to_right,var(--white-0),var(--white))]',
+    'dark:after:bg-[linear-gradient(to_right,var(--black-0),var(--black))]',
   ]
   return (
     <section className='relative'>
       <div className={classes.join(' ').trim()}>
         {groups.map((group, i: number) => (
-          <GroupDetailPill bgColor={i % 2 === 0 ? 'orange' : 'black'} key={group.id} group={group} />
+          <GroupDetailPill
+            bgColor={i % 2 === 0 ? 'orange' : 'black'}
+            key={group.id}
+            group={group}
+          />
         ))}
       </div>
     </section>

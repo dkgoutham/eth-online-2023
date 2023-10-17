@@ -7,7 +7,7 @@ interface IProps extends IContainerProps {
 
 export default function RightPillWrapper({ pillQuote, children }: IProps) {
   return (
-    <main className='mx-auto flex w-full gap-9 px-4'>
+    <main className='mx-auto flex w-full gap-9 px-4 mb-10'>
       <aside className='hidden w-1/3 basis-1/3 sm:block'>
         <GroupPill text={pillQuote} />
       </aside>
