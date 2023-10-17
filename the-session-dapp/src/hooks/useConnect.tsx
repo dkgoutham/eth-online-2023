@@ -1,14 +1,14 @@
-'use client'
+import { useState } from 'react'
 
-import { useState, useEffect } from 'react'
+interface IUseConnect {
+  isConnected: boolean
+  handleConnect: (connect: boolean) => void
+}
 
-export const useConnect = (): boolean => {
+export const useConnect = (): IUseConnect => {
   const [isConnected, setIsConnected] = useState<boolean>(false)
-
-  useEffect(() => {
-    if (!window.ethereum) return
-    setIsConnected(true)
-  }, [])
-
-  return isConnected
+  const handleConnect = (connect: boolean) => {
+    setIsConnected(connect)
+  }
+  return { isConnected, handleConnect }
 }

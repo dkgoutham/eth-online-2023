@@ -1,25 +1,42 @@
 'use client'
 
+import { useState, useEffect, useCallback, memo } from 'react'
 import Link from 'next/link'
+import { notFound } from 'next/navigation'
 import { Group } from '@/model'
-import { useConnect } from '@/hooks'
 import PillWrapper from '../wrappers/PillWrapper'
+import { useConnectContext } from '@/store'
+import { getGroup } from '@/services'
 
 interface IProps {
   bgColor: 'black' | 'orange'
-  group: Group
+  groupId: string
+  topic: string
 }
 
-export default function GroupDetailPill({
-  bgColor,
-  group: { id, topic, quote, schedule, image, peers },
-}: IProps) {
-  const isConnected = useConnect()
+function GroupDetailPill({ bgColor, groupId, topic }: IProps) {
+  const [group, setGroup] = useState<Group | null>(null)
+  const { isConnected } = useConnectContext()
+  const fetchGroup = useCallback(async () => {
+    try {
+      setGroup(await getGroup(groupId, topic))
+    } catch (error) {
+      notFound()
+    }
+  }, [groupId, topic])
+
+  useEffect(() => {
+    fetchGroup()
+  }, [fetchGroup])
+
+  if (!group) return null
+
+  const { id, quote, schedule, image, peers } = group
 
   return (
     <>
       <PillWrapper
-        className='relative flex h-full w-52 flex-col justify-end gap-2 text-left'
+        className='relative flex h-full w-full flex-col justify-end gap-2 text-left pb-24'
         bgColor={bgColor}
         bgImage={image || undefined}
       >
@@ -33,7 +50,7 @@ export default function GroupDetailPill({
         {peers > 0 && <p className='w-full text-sm leading-3'>{peers} peers</p>}
         {isConnected && (
           <Link
-            className='absolute bottom-0 right-0 flex h-20 w-20 items-center justify-center rounded-full bg-[--blue] font-bold'
+            className='absolute bottom-0 right-0 flex h-20 w-20 items-center justify-center rounded-full bg-[--blue] font-bold text-[--white]'
             href={`/groups/${id}`}
           >
             join
@@ -43,3 +60,5 @@ export default function GroupDetailPill({
     </>
   )
 }
+
+export default memo(GroupDetailPill)

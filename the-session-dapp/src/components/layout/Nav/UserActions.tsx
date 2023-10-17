@@ -1,21 +1,27 @@
-import { User } from '@/model'
+'use client'
+
 import Badge from './Badge'
 import Avatar from './Avatar'
+import ConnectButton from '../ConnectButton'
+import { useConnectContext } from '@/store'
 
-interface IProps {
-  user: User
-}
+export default function UserActions() {
+  const { isConnected, user, disconnect } = useConnectContext()
 
-export default function UserActions({
-  user: { id, username, avatar, notifications },
-}: IProps) {
-  return (
-    <li className='flex items-center gap-4'>
-      <span className='hidden max-w-[10ch] truncate sm:inline'>
-        hi {username || id}!
-      </span>
-      <Avatar src={avatar} />
-      {notifications > 0 && <Badge notifications={notifications} />}
-    </li>
-  )
+  if (user && isConnected) {
+    const { id, username, avatar, notifications } = user
+    return (
+      <li
+        className='flex cursor-pointer items-center gap-4'
+        onClick={() => disconnect()}
+      >
+        <span className='hidden max-w-[10ch] truncate sm:inline'>
+          hi {username || id}!
+        </span>
+        <Avatar src={avatar} />
+        {notifications > 0 && <Badge notifications={notifications} />}
+      </li>
+    )
+  }
+  return <ConnectButton />
 }

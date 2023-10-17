@@ -1,0 +1,18 @@
+.slider-wrapper::before,
+.slider-wrapper::after {
+  display: block;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  height: 100%;
+  width: 100px;
+  content: '';
+}
+
+.slider-wrapper::before {
+  left: 0;
+}
+
+.slider-wrapper::after {
+  right: 0;
+}
