@@ -1,17 +1,17 @@
+:root {
+  --background: var(--white);
+}
+
 * {
   color: var(--black);
 }
 
-body {
-  background-color: var(--white);
-}
-
 @media (prefers-color-scheme: dark) {
-  * {
-    color: var(--white);
+  :root {
+    --background: var(--black);
   }
 
-  body {
-    background-color: var(--black);
+  * {
+    color: var(--white);
   }
 }

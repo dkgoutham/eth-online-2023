@@ -9,7 +9,7 @@ import { useConnectContext } from '@/store'
 import { getGroup } from '@/services'
 
 interface IProps {
-  bgColor: 'black' | 'orange'
+  bgColor: string
   groupId: string
   topic: string
 }
@@ -36,7 +36,7 @@ function GroupDetailPill({ bgColor, groupId, topic }: IProps) {
   return (
     <>
       <PillWrapper
-        className='relative flex h-full w-full flex-col justify-end gap-2 text-left pb-24'
+        className='pb-24'
         bgColor={bgColor}
         bgImage={image || undefined}
       >
@@ -50,7 +50,11 @@ function GroupDetailPill({ bgColor, groupId, topic }: IProps) {
         {peers > 0 && <p className='w-full text-sm leading-3'>{peers} peers</p>}
         {isConnected && (
           <Link
-            className='absolute bottom-0 right-0 flex h-20 w-20 items-center justify-center rounded-full bg-[--blue] font-bold text-[--white]'
+            className={`absolute bottom-0 right-0 flex h-20 w-20 items-center justify-center rounded-full border-[1px] border-[--black] ${
+              bgColor === 'accent'
+                ? 'bg-white text-[--black]'
+                : 'bg-[--blue] text-[--white]'
+            } font-bold dark:border-[--white]`}
             href={`/groups/${id}`}
           >
             join
