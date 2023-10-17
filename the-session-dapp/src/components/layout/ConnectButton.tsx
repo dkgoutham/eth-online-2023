@@ -10,11 +10,11 @@ export default function ConnectButton() {
 
   const connectHandler = () => {
     // TODO Add connect logic
-    if (isConnected) push('/1')
+    if (isConnected) push('/groups')
   }
   return (
     <Button onClick={connectHandler}>
-      {isConnected ? 'profile' : 'connect'}
+      {isConnected ? 'find more groups' : 'connect'}
     </Button>
   )
 }

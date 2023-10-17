@@ -8,15 +8,11 @@ import TopicTags from '@/components/layout/TopicTags'
 import HeaderWrapper from '@/components/wrappers/HeaderWrapper'
 import GroupsSlider from '@/components/layout/GroupsSlider'
 
-export default async function UserLanding({
-  params,
-}: {
-  params: { userID: string }
-}) {
+export default async function UserLanding() {
   let user: User, topics: GroupTopic[], groups: Group[]
   try {
-    // TODO Add auth
-    user = await getUser(params.userID)
+    // TODO Add auth and getUser from endpoint
+    user = await getUser('1')
     topics = await getTopics(13)
     groups = await getGroups(6)
   } catch (err) {

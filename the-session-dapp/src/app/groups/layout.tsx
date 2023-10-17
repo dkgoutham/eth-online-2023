@@ -1,4 +1,4 @@
-import './connected.css'
+import './dashboard.css'
 
 export default function ConnectedLayout({
   children,
