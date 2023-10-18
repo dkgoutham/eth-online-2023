@@ -11,14 +11,14 @@ export default async function GroupsSlider({ useAccent = false }: IProps) {
 
   if (groups?.length > 0) {
     const classes = [
-      'relative h-80 w-full',
+      'relative h-80 w-full max-w-full',
       'before:bg-[linear-gradient(to_right,var(--background),var(--background-0))]',
       'after:bg-[linear-gradient(to_right,var(--background-0),var(--background))]',
     ]
 
     return (
       <div className={[...classes, style['slider-wrapper']].join(' ').trim()}>
-        <div className='grid h-full auto-cols-[200px] grid-flow-col gap-8 overflow-scroll px-24'>
+        <div className='grid h-full auto-cols-[200px] grid-flow-col gap-8 overflow-scroll px-[10%]'>
           {groups.map((group, i: number) => {
             return (
               <GroupDetailPill
