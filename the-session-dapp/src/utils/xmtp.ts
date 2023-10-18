@@ -2,13 +2,14 @@ import { Client, Conversation } from '@xmtp/xmtp-js'
 import { Wallet, HDNodeWallet } from 'ethers'
 import { XMTP_ENV, WALLET_TO } from '@/config'
 
-export const createWallet = (provider: any): HDNodeWallet => {
+export const createWallet = (provider?: any): HDNodeWallet => {
   return Wallet.createRandom(provider ?? null)
 }
 
 export const createClient = async (
-  wallet: HDNodeWallet | Wallet
-): Promise<Client> => await Client.create(wallet, { env: XMTP_ENV })
+  wallet: HDNodeWallet | Wallet | undefined
+): Promise<Client> =>
+  await Client.create(wallet ?? createWallet(), { env: XMTP_ENV })
 
 export const addressExistsOnXMTP = async (
   xmtp: Client,
@@ -18,10 +19,10 @@ export const addressExistsOnXMTP = async (
 export const startConversation = async (
   xmtp: Client,
   walletTo: string = WALLET_TO
-): Promise<Conversation | void> => {
+): Promise<Conversation | undefined> => {
   const canMessage = await addressExistsOnXMTP(xmtp, walletTo)
-  if (!canMessage) return
-  if (xmtp) return await xmtp.conversations.newConversation(walletTo)
+  if (!canMessage) return undefined
+  return await xmtp.conversations.newConversation(walletTo)
 }
 
 export const sendMessage = async (

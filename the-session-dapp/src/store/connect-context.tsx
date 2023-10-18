@@ -12,10 +12,8 @@ import { getUser } from '@/services'
 import { notFound } from 'next/navigation'
 import { User } from '@/model'
 import { HDNodeWallet } from 'ethers'
-import { Client } from '@xmtp/xmtp-js'
 
 interface IUserContext {
-  xmtp: Promise<Client> | undefined
   wallet: HDNodeWallet | undefined
   isConnected: boolean
   user: User | null
@@ -24,7 +22,6 @@ interface IUserContext {
 }
 
 const ConnectContext = createContext<IUserContext>({
-  xmtp: undefined,
   wallet: undefined,
   isConnected: false,
   user: null,
@@ -41,7 +38,7 @@ interface IProps {
 }
 
 export function ConnectProvider({ children }: IProps) {
-  const { xmtp, wallet, isConnected, handleConnect } = useConnect()
+  const { wallet, isConnected, handleConnect } = useConnect()
   const [user, setUser] = useState<User | null>(null)
   const connect = () => handleConnect(true)
   const disconnect = () => handleConnect(false)
@@ -62,7 +59,6 @@ export function ConnectProvider({ children }: IProps) {
   return (
     <ConnectContext.Provider
       value={{
-        xmtp,
         wallet: wallet as HDNodeWallet | undefined,
         isConnected,
         user,
