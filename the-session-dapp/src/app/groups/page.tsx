@@ -7,7 +7,7 @@ import Nav from '@/components/layout/Nav'
 import RightPillWrapper from '@/components/wrappers/RightPillWrapper'
 import TopicTags from '@/components/layout/TopicTags'
 import HeaderWrapper from '@/components/wrappers/HeaderWrapper'
-import GroupsSlider from '@/components/layout/GroupSlider/GroupsSlider'
+import GroupsSlider from '@/components/layout/GroupSlider'
 
 export default async function UserLanding() {
   let user: User, topics: GroupTopic[]
