@@ -1,0 +1,474 @@
+[
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_username",
+				"type": "string"
+			}
+		],
+		"name": "addGeneralUser",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_username",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_description",
+				"type": "string"
+			}
+		],
+		"name": "addModerator",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_username",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_speciality",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_medicalLicenseNumber",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_description",
+				"type": "string"
+			}
+		],
+		"name": "addTherapist",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "userAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "groupId",
+				"type": "uint256"
+			}
+		],
+		"name": "addUserToGroup",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "_title",
+				"type": "string"
+			},
+			{
+				"internalType": "enum Session.Tag",
+				"name": "_tag",
+				"type": "uint8"
+			},
+			{
+				"internalType": "string",
+				"name": "_day",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_time",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_duration",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "_groupDescription",
+				"type": "string"
+			}
+		],
+		"name": "createGroup",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "userAddress",
+				"type": "address"
+			}
+		],
+		"name": "getGeneralUserUsername",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "username",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_groupId",
+				"type": "uint256"
+			}
+		],
+		"name": "getGroupById",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "groupId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "title",
+				"type": "string"
+			},
+			{
+				"internalType": "enum Session.Tag",
+				"name": "tag",
+				"type": "uint8"
+			},
+			{
+				"internalType": "uint256",
+				"name": "numberOfPeers",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "day",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "time",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "duration",
+				"type": "uint256"
+			},
+			{
+				"internalType": "string",
+				"name": "groupDescription",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "therapistAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "timeCreated",
+				"type": "uint256"
+			},
+			{
+				"internalType": "address",
+				"name": "moderatorAddress",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "enum Session.Tag",
+				"name": "tag",
+				"type": "uint8"
+			}
+		],
+		"name": "getGroupCountByTag",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "groupId",
+				"type": "uint256"
+			}
+		],
+		"name": "getGroupMembers",
+		"outputs": [
+			{
+				"internalType": "address[20]",
+				"name": "",
+				"type": "address[20]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "userAddress",
+				"type": "address"
+			}
+		],
+		"name": "getGroupMembershipOfUser",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "enum Session.Tag",
+				"name": "tag",
+				"type": "uint8"
+			}
+		],
+		"name": "getGroupsByTag",
+		"outputs": [
+			{
+				"components": [
+					{
+						"internalType": "uint256",
+						"name": "groupId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "enum Session.Tag",
+						"name": "tag",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint256",
+						"name": "numberOfPeers",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "day",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "time",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "duration",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "groupDescription",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "therapistAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timeCreated",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "moderatorAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address[20]",
+						"name": "members",
+						"type": "address[20]"
+					}
+				],
+				"internalType": "struct Session.Group[]",
+				"name": "",
+				"type": "tuple[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "therapistAddress",
+				"type": "address"
+			}
+		],
+		"name": "getGroupsOfTherapist",
+		"outputs": [
+			{
+				"internalType": "uint256[]",
+				"name": "",
+				"type": "uint256[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "modAddress",
+				"type": "address"
+			}
+		],
+		"name": "getModerator",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "username",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "description",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "createdTime",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "therapistAddress",
+				"type": "address"
+			}
+		],
+		"name": "getTherapist",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "username",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "speciality",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "medicalLicenseNumber",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "description",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "userAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "uint256",
+				"name": "groupId",
+				"type": "uint256"
+			}
+		],
+		"name": "isUserPartOfGroup",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "userAddress",
+				"type": "address"
+			}
+		],
+		"name": "isUserRegistered",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	}
+]
