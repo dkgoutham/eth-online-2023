@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import { getChat } from '@/services'
+import Chat from '@/components/layout/Chat'
 
 export default async function GroupChat({
   params,
@@ -11,5 +12,10 @@ export default async function GroupChat({
   } catch (err) {
     notFound()
   }
-  return <div>{params.groupChatId}</div>
+  return (
+    <>
+      <div>{params.groupChatId}</div>
+      <Chat />
+    </>
+  )
 }
