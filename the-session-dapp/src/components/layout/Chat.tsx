@@ -1,6 +1,5 @@
 'use client'
 
-import { useEffect } from 'react'
 import { useConnectContext } from '@/store'
 
 interface IStream {

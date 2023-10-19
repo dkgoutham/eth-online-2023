@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react'
 import { providers } from 'ethers'
-import { getWeb3, getAddress } from '@/utils'
+import { getWeb3 } from '@/utils'
 
 interface IUseConnect {
   hasWallet: boolean

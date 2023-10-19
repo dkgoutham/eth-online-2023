@@ -4,9 +4,9 @@ import { useState, useEffect, useCallback, memo } from 'react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Group } from '@/model'
-import PillWrapper from '../wrappers/PillWrapper'
 import { useConnectContext } from '@/store'
 import { getGroup } from '@/services'
+import PillWrapper from '../wrappers/PillWrapper'
 
 interface IProps {
   bgColor: string
