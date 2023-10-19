@@ -42,11 +42,15 @@ interface IProps {
 }
 
 export function ConnectProvider({ children }: IProps) {
-  const { hasWallet, signer, address, isConnected, handleConnect } =
-    useConnect()
+  const {
+    hasWallet,
+    signer,
+    address,
+    isConnected,
+    handleConnect,
+    handleDisconnect,
+  } = useConnect()
   const [user, setUser] = useState<User | null>(null)
-  const connect = () => handleConnect(true)
-  const disconnect = () => handleConnect(false)
   const fetchUser = async (userId: string) => {
     try {
       const user = await getUser(userId)
@@ -69,8 +73,8 @@ export function ConnectProvider({ children }: IProps) {
         address,
         isConnected,
         user,
-        connect,
-        disconnect,
+        connect: handleConnect,
+        disconnect: handleDisconnect,
       }}
     >
       {children}

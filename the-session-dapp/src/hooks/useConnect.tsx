@@ -1,13 +1,14 @@
 import { useState, useCallback, useEffect } from 'react'
 import { providers } from 'ethers'
-import { getWeb3 } from '@/utils'
+import { getWeb3, getSigner, getAddress } from '@/utils'
 
 interface IUseConnect {
   hasWallet: boolean
   address: string | undefined
   isConnected: boolean
   signer: providers.JsonRpcSigner | undefined
-  handleConnect: (connect: boolean) => void
+  handleConnect: () => void
+  handleDisconnect: () => void
 }
 
 export const useConnect = (): IUseConnect => {
@@ -16,16 +17,23 @@ export const useConnect = (): IUseConnect => {
   const [signer, setSigner] = useState<providers.JsonRpcSigner | undefined>()
   const [address, setAddress] = useState<string | undefined>()
   const [isConnected, setIsConnected] = useState<boolean>(false)
-  const handleConnect = useCallback(
-    async (connect: boolean) => {
-      provider?.getSigner()
-      setIsConnected(connect)
-    },
-    [provider]
-  )
+  const handleConnect = useCallback(async () => {
+    if (provider) {
+      const _signer = getSigner(provider)
+      const _address = await getAddress(_signer)
+      if (!_address) return
+      setAddress(_address)
+      setIsConnected(true)
+    }
+  }, [provider])
+  const handleDisconnect = () => {
+    setIsConnected(false)
+    setAddress(undefined)
+    setSigner(undefined)
+  }
   const handleSetAddress = useCallback(async () => {
-    const signerAddress = await signer?.getAddress()
-    setAddress(signerAddress)
+    const signerAddress = await getAddress(signer)
+    if (signerAddress) setAddress(signerAddress)
   }, [signer])
 
   useEffect(() => {
@@ -36,12 +44,27 @@ export const useConnect = (): IUseConnect => {
   }, [hasWallet])
 
   useEffect(() => {
-    if (provider) setSigner(provider.getSigner())
+    if (provider) {
+      try {
+        setSigner(getSigner(provider))
+      } catch (_) {
+        setSigner(undefined)
+        setAddress(undefined)
+        setIsConnected(false)
+      }
+    }
   }, [provider])
 
   useEffect(() => {
     if (signer) handleSetAddress()
   }, [handleSetAddress, signer])
 
-  return { hasWallet, signer, address, isConnected, handleConnect }
+  return {
+    hasWallet,
+    signer,
+    address,
+    isConnected,
+    handleConnect,
+    handleDisconnect,
+  }
 }
