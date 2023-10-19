@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang='en' className={inter.className}>
-      <body className='flex min-h-screen w-full flex-col items-center'>
+      <body>
         <RainbowProvider>
           <ConnectProvider>{children}</ConnectProvider>
         </RainbowProvider>

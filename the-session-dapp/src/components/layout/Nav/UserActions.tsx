@@ -7,7 +7,7 @@ import ConnectButton from '../ConnectButton'
 import { useConnectContext } from '@/store'
 
 export default function UserActions() {
-  const { isConnected, user } = useConnectContext()
+  const { isConnected, user, address } = useConnectContext()
   const { openAccountModal } = useAccountModal()
 
   if (user && isConnected) {
@@ -18,7 +18,7 @@ export default function UserActions() {
         onClick={openAccountModal}
       >
         <span className='hidden max-w-[10ch] truncate sm:inline'>
-          hi {username || id}!
+          hi {address}!
         </span>
         <Avatar src={avatar} />
         {notifications > 0 && <Badge notifications={notifications} />}
