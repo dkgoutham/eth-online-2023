@@ -21,16 +21,14 @@ specifiers:
   react-dom: ^18
   tailwindcss: ^3
   typescript: ^5
-  utf-8-validate: ^5.0.2
 
 dependencies:
-  '@pushprotocol/restapi': 1.4.27_5y65mtf7xrhgayp4wg6ot7betu
-  '@pushprotocol/socket': 0.5.2_d6omumek64wzjn7kxx3jxg2vxu
-  ethers: 5.7.2_utf-8-validate@5.0.10
+  '@pushprotocol/restapi': 1.4.27_nm224mgsqcyxxwnjrsf4y6gage
+  '@pushprotocol/socket': 0.5.2_ethers@5.7.2
+  ethers: 5.7.2
   next: 13.5.4_biqbaboplfbrettd7655fr4n2y
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
-  utf-8-validate: 5.0.10
 
 devDependencies:
   '@types/node': 20.8.4
@@ -64,10 +62,10 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /@ambire/signature-validator/1.3.1_utf-8-validate@5.0.10:
+  /@ambire/signature-validator/1.3.1:
     resolution: {integrity: sha512-kR6Se3nhAGf1VMeun7V2Lml9KRXB5oz64vO2zGSg+dNaGq4BPDEjsNdr0PIKXZ8651sDlRCN7V9SzL5E2ddBYQ==}
     dependencies:
-      ethers: 5.7.2_utf-8-validate@5.0.10
+      ethers: 5.7.2
       tap-spec: 5.0.0
       tape: 5.7.1
     transitivePeerDependencies:
@@ -307,7 +305,7 @@ packages:
       '@ethersproject/logger': 5.7.0
     dev: false
 
-  /@ethersproject/providers/5.7.2_utf-8-validate@5.0.10:
+  /@ethersproject/providers/5.7.2:
     resolution: {integrity: sha512-g34EWZ1WWAVgr4aptGlVBF8mhl3VWjv+8hoAnzStu8Ah22VHBsuGzP17eb6xDVRzw895G4W7vvx60lFFur/1Rg==}
     dependencies:
       '@ethersproject/abstract-provider': 5.7.0
@@ -329,7 +327,7 @@ packages:
       '@ethersproject/transactions': 5.7.0
       '@ethersproject/web': 5.7.1
       bech32: 1.1.4
-      ws: 7.4.6_utf-8-validate@5.0.10
+      ws: 7.4.6
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -701,29 +699,29 @@ packages:
       tslib: 2.6.2
     dev: true
 
-  /@pushprotocol/restapi/1.4.27_5y65mtf7xrhgayp4wg6ot7betu:
+  /@pushprotocol/restapi/1.4.27_nm224mgsqcyxxwnjrsf4y6gage:
     resolution: {integrity: sha512-qZDQALnT4/gTl0wYucESB5Tu5aDrA+uroJ9R40VEdcfjXoZgL3aKY9Xv2dOlpqp2H19AfykZwL+SvqlA0YR0uw==}
     peerDependencies:
       ethers: ^5.6.8
     dependencies:
-      '@ambire/signature-validator': 1.3.1_utf-8-validate@5.0.10
+      '@ambire/signature-validator': 1.3.1
       '@metamask/eth-sig-util': 5.1.0
-      '@pushprotocol/socket': 0.5.2_d6omumek64wzjn7kxx3jxg2vxu
+      '@pushprotocol/socket': 0.5.2_ethers@5.7.2
       axios: 0.27.2
       buffer: 6.0.3
       crypto-js: 4.1.1
-      ethers: 5.7.2_utf-8-validate@5.0.10
+      ethers: 5.7.2
       immer: 10.0.3
       joi: 17.11.0
       livepeer: 2.9.2_34z7eajsijccsvhu4drxijgmum
       openpgp: 5.10.2
       simple-peer: 9.11.1
-      socket.io-client: 4.7.2_utf-8-validate@5.0.10
+      socket.io-client: 4.7.2
       tslib: 2.6.2
       unique-names-generator: 4.7.1
       uuid: 9.0.1
       video-stream-merger: 4.0.1
-      viem: 1.16.6_olypagwc65nhzumzf6kfifekti
+      viem: 1.16.6_typescript@5.2.2
     transitivePeerDependencies:
       - '@types/react'
       - bufferutil
@@ -736,13 +734,13 @@ packages:
       - zod
     dev: false
 
-  /@pushprotocol/socket/0.5.2_d6omumek64wzjn7kxx3jxg2vxu:
+  /@pushprotocol/socket/0.5.2_ethers@5.7.2:
     resolution: {integrity: sha512-lVGMT3q8T5by6qwAhQ+zIeE/yv7oUC9eIlFux8M7WaKu/ArLBrrojD5REbr9QXXwpJIP3Q8GJUKyClZl4uGsJw==}
     peerDependencies:
       ethers: ^5.6.8
     dependencies:
-      ethers: 5.7.2_utf-8-validate@5.0.10
-      socket.io-client: 4.7.2_utf-8-validate@5.0.10
+      ethers: 5.7.2
+      socket.io-client: 4.7.2
       tslib: 2.6.2
     transitivePeerDependencies:
       - bufferutil
@@ -1530,13 +1528,13 @@ packages:
     resolution: {integrity: sha512-L18DaJsXSUk2+42pv8mLs5jJT2hqFkFE4j21wOmgbUqsZ2hL72NsUU785g9RXgo3s0ZNgVl42TiHp3ZtOv/Vyg==}
     dev: true
 
-  /engine.io-client/6.5.2_utf-8-validate@5.0.10:
+  /engine.io-client/6.5.2:
     resolution: {integrity: sha512-CQZqbrpEYnrpGqC07a9dJDz4gePZUgTPMU3NKJPSeQOyw27Tst4Pl3FemKoFGAlHzgZmKjoRmiJvbWfhCXUlIg==}
     dependencies:
       '@socket.io/component-emitter': 3.1.0
       debug: 4.3.4
       engine.io-parser: 5.2.1
-      ws: 8.11.0_utf-8-validate@5.0.10
+      ws: 8.11.0
       xmlhttprequest-ssl: 2.0.0
     transitivePeerDependencies:
       - bufferutil
@@ -2007,7 +2005,7 @@ packages:
       '@scure/bip39': 1.2.1
     dev: false
 
-  /ethers/5.7.2_utf-8-validate@5.0.10:
+  /ethers/5.7.2:
     resolution: {integrity: sha512-wswUsmWo1aOK8rR7DIKiWSw9DbLWe6x98Jrn8wcTflTVvaXhAMaB5zGAXy0GYQEQp9iO1iSHWVyARQm11zUtyg==}
     dependencies:
       '@ethersproject/abi': 5.7.0
@@ -2028,7 +2026,7 @@ packages:
       '@ethersproject/networks': 5.7.1
       '@ethersproject/pbkdf2': 5.7.0
       '@ethersproject/properties': 5.7.0
-      '@ethersproject/providers': 5.7.2_utf-8-validate@5.0.10
+      '@ethersproject/providers': 5.7.2
       '@ethersproject/random': 5.7.0
       '@ethersproject/rlp': 5.7.0
       '@ethersproject/sha2': 5.7.0
@@ -2665,7 +2663,7 @@ packages:
     peerDependencies:
       ws: '*'
     dependencies:
-      ws: 8.13.0_utf-8-validate@5.0.10
+      ws: 8.13.0
     dev: false
 
   /iterator.prototype/1.1.2:
@@ -3019,11 +3017,6 @@ packages:
         optional: true
     dependencies:
       whatwg-url: 5.0.0
-    dev: false
-
-  /node-gyp-build/4.6.1:
-    resolution: {integrity: sha512-24vnklJmyRS8ViBNI8KbtK/r/DmXQMRiOMXTNz2nrTnAYUwjmEEbnnpB/+kt+yWRv73bPsSPRFddrcIbAxSiMQ==}
-    hasBin: true
     dev: false
 
   /node-releases/2.0.13:
@@ -3707,13 +3700,13 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /socket.io-client/4.7.2_utf-8-validate@5.0.10:
+  /socket.io-client/4.7.2:
     resolution: {integrity: sha512-vtA0uD4ibrYD793SOIAwlo8cj6haOeMHrGvwPxJsxH7CeIksqJ+3Zc06RvWTIFgiSqx4A3sOnTXpfAEE2Zyz6w==}
     engines: {node: '>=10.0.0'}
     dependencies:
       '@socket.io/component-emitter': 3.1.0
       debug: 4.3.4
-      engine.io-client: 6.5.2_utf-8-validate@5.0.10
+      engine.io-client: 6.5.2
       socket.io-parser: 4.2.4
     transitivePeerDependencies:
       - bufferutil
@@ -4190,14 +4183,6 @@ packages:
       react: 18.2.0
     dev: false
 
-  /utf-8-validate/5.0.10:
-    resolution: {integrity: sha512-Z6czzLq4u8fPOyx7TU6X3dvUZVvoJmxSQ+IcrlmagKhilxlhZgxPK6C5Jqbkw1IDUmFTM+cz9QDnnLTwDz/2gQ==}
-    engines: {node: '>=6.14.2'}
-    requiresBuild: true
-    dependencies:
-      node-gyp-build: 4.6.1
-    dev: false
-
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
@@ -4210,7 +4195,7 @@ packages:
     resolution: {integrity: sha512-VazYSr8tk6S/zkOq5jpR/ryy1HnGxm5XCw+d2Ejpqy1m6d71oZpyFG82dUkgAo7dg/lk3k4TqvJPtuRUtR8URA==}
     dev: false
 
-  /viem/1.16.6_olypagwc65nhzumzf6kfifekti:
+  /viem/1.16.6_typescript@5.2.2:
     resolution: {integrity: sha512-jcWcFQ+xzIfDwexwPJRvCuCRJKEkK9iHTStG7mpU5MmuSBpACs4nATBDyXNFtUiyYTFzLlVEwWkt68K0nCSImg==}
     peerDependencies:
       typescript: '>=5.0.4'
@@ -4226,7 +4211,7 @@ packages:
       abitype: 0.9.8_typescript@5.2.2
       isows: 1.0.3_ws@8.13.0
       typescript: 5.2.2
-      ws: 8.13.0_utf-8-validate@5.0.10
+      ws: 8.13.0
     transitivePeerDependencies:
       - bufferutil
       - utf-8-validate
@@ -4308,7 +4293,7 @@ packages:
   /wrappy/1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
-  /ws/7.4.6_utf-8-validate@5.0.10:
+  /ws/7.4.6:
     resolution: {integrity: sha512-YmhHDO4MzaDLB+M9ym/mDA5z0naX8j7SIlT8f8z+I0VtzsRbekxEutHSme7NPS2qE8StCYQNUnfWdXta/Yu85A==}
     engines: {node: '>=8.3.0'}
     peerDependencies:
@@ -4319,11 +4304,9 @@ packages:
         optional: true
       utf-8-validate:
         optional: true
-    dependencies:
-      utf-8-validate: 5.0.10
     dev: false
 
-  /ws/8.11.0_utf-8-validate@5.0.10:
+  /ws/8.11.0:
     resolution: {integrity: sha512-HPG3wQd9sNQoT9xHyNCXoDUa+Xw/VevmY9FoHyQ+g+rrMn4j6FB4np7Z0OhdTgjx6MgQLK7jwSy1YecU1+4Asg==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
@@ -4334,11 +4317,9 @@ packages:
         optional: true
       utf-8-validate:
         optional: true
-    dependencies:
-      utf-8-validate: 5.0.10
     dev: false
 
-  /ws/8.13.0_utf-8-validate@5.0.10:
+  /ws/8.13.0:
     resolution: {integrity: sha512-x9vcZYTrFPC7aSIbj7sRCYo7L/Xb8Iy+pW0ng0wt2vCJv7M9HOMy0UoN3rr+IFC7hb7vXoqS+P9ktyLLLhO+LA==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
@@ -4349,8 +4330,6 @@ packages:
         optional: true
       utf-8-validate:
         optional: true
-    dependencies:
-      utf-8-validate: 5.0.10
     dev: false
 
   /xmlhttprequest-ssl/2.0.0:
