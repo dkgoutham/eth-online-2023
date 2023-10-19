@@ -1,8 +1,4 @@
-import { providers, Wallet } from 'ethers'
-
-export const createWallet = (
-  provider?: providers.Web3Provider | null
-): Wallet => Wallet.createRandom(provider ?? null)
+import { providers } from 'ethers'
 
 export const getWeb3 = (ethereum: any) => new providers.Web3Provider(ethereum)
 

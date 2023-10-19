@@ -11,11 +11,8 @@ import { useConnect } from '@/hooks'
 import { getUser } from '@/services'
 import { notFound } from 'next/navigation'
 import { User } from '@/model'
-import { providers } from 'ethers'
 
 interface IUserContext {
-  hasWallet: boolean
-  signer: providers.JsonRpcSigner | undefined
   address: string | undefined
   isConnected: boolean
   user: User | null
@@ -24,8 +21,6 @@ interface IUserContext {
 }
 
 const ConnectContext = createContext<IUserContext>({
-  hasWallet: false,
-  signer: undefined,
   address: undefined,
   isConnected: false,
   user: null,
@@ -42,14 +37,7 @@ interface IProps {
 }
 
 export function ConnectProvider({ children }: IProps) {
-  const {
-    hasWallet,
-    signer,
-    address,
-    isConnected,
-    handleConnect,
-    handleDisconnect,
-  } = useConnect()
+  const { address, isConnected, handleConnect, handleDisconnect } = useConnect()
   const [user, setUser] = useState<User | null>(null)
   const fetchUser = async (userId: string) => {
     try {
@@ -68,8 +56,6 @@ export function ConnectProvider({ children }: IProps) {
   return (
     <ConnectContext.Provider
       value={{
-        hasWallet,
-        signer,
         address,
         isConnected,
         user,

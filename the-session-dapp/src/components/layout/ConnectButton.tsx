@@ -1,14 +1,7 @@
 'use client'
 
-import { useConnectContext } from '@/store'
-import Button from '@/components/ui/Button'
+import { ConnectButton as RainbowButton } from '@rainbow-me/rainbowkit'
 
 export default function ConnectButton() {
-  const { isConnected, connect, disconnect } = useConnectContext()
-
-  return (
-    <Button onClick={() => (isConnected ? disconnect() : connect())}>
-      {isConnected ? 'disconnect' : 'connect'}
-    </Button>
-  )
+  return <RainbowButton />
 }

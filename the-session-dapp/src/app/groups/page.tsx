@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation'
 import { getTopics, getUser } from '@/services'
 import { User, GroupTopic } from '@/model'
-import { ConnectProvider } from '@/store'
 import H1 from '@/components/ui/H1'
 import Nav from '@/components/layout/Nav'
 import RightPillWrapper from '@/components/wrappers/RightPillWrapper'
@@ -19,7 +18,7 @@ export default async function UserLanding() {
     notFound()
   }
   return (
-    <ConnectProvider>
+    <>
       <HeaderWrapper>
         <Nav user={user} />
       </HeaderWrapper>
@@ -28,6 +27,6 @@ export default async function UserLanding() {
         <TopicTags topics={topics} />
         <GroupsSlider />
       </RightPillWrapper>
-    </ConnectProvider>
+    </>
   )
 }

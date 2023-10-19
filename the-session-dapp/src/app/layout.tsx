@@ -1,6 +1,9 @@
 import './globals.css'
+import '@rainbow-me/rainbowkit/styles.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import { ConnectProvider } from '@/store'
+import { RainbowProvider } from '@/config'
 import Favicon from '@public/favicon.ico'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -19,7 +22,9 @@ export default function RootLayout({
   return (
     <html lang='en' className={inter.className}>
       <body className='flex min-h-screen w-full flex-col items-center'>
-        {children}
+        <RainbowProvider>
+          <ConnectProvider>{children}</ConnectProvider>
+        </RainbowProvider>
       </body>
     </html>
   )
