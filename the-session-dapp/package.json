@@ -12,9 +12,9 @@
     "format:fix": "prettier --write ."
   },
   "dependencies": {
-    "@xmtp/xmtp-js": "^11.2.0",
-    "buffer": "^6.0.3",
-    "ethers": "^6.8.0",
+    "@pushprotocol/restapi": "^1.4.27",
+    "@pushprotocol/socket": "^0.5.2",
+    "ethers": "^5.7",
     "next": "13.5.4",
     "react": "^18",
     "react-dom": "^18",

@@ -11,10 +11,12 @@ import { useConnect } from '@/hooks'
 import { getUser } from '@/services'
 import { notFound } from 'next/navigation'
 import { User } from '@/model'
-import { HDNodeWallet } from 'ethers'
+import { providers } from 'ethers'
 
 interface IUserContext {
-  wallet: HDNodeWallet | undefined
+  hasWallet: boolean
+  signer: providers.JsonRpcSigner | undefined
+  address: string | undefined
   isConnected: boolean
   user: User | null
   connect: () => void
@@ -22,7 +24,9 @@ interface IUserContext {
 }
 
 const ConnectContext = createContext<IUserContext>({
-  wallet: undefined,
+  hasWallet: false,
+  signer: undefined,
+  address: undefined,
   isConnected: false,
   user: null,
   connect() {},
@@ -38,7 +42,8 @@ interface IProps {
 }
 
 export function ConnectProvider({ children }: IProps) {
-  const { wallet, isConnected, handleConnect } = useConnect()
+  const { hasWallet, signer, address, isConnected, handleConnect } =
+    useConnect()
   const [user, setUser] = useState<User | null>(null)
   const connect = () => handleConnect(true)
   const disconnect = () => handleConnect(false)
@@ -59,7 +64,9 @@ export function ConnectProvider({ children }: IProps) {
   return (
     <ConnectContext.Provider
       value={{
-        wallet: wallet as HDNodeWallet | undefined,
+        hasWallet,
+        signer,
+        address,
         isConnected,
         user,
         connect,
