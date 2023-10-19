@@ -1,5 +1,7 @@
-import { ethers } from "ethers";
+import { ethers } from 'ethers'
 
-const provider = new ethers.providers.JsonRpcProvider("https://sepolia-rpc.scroll.io/");
+const provider = new ethers.providers.JsonRpcProvider(
+  'https://sepolia-rpc.scroll.io/'
+)
 
-export default provider;
+export default provider

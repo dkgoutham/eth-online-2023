@@ -7,25 +7,21 @@ import {
   useContext,
   ReactNode,
 } from 'react'
-import { useConnect } from '@/hooks'
-import { getUser } from '@/services'
 import { notFound } from 'next/navigation'
+import { useAccount } from 'wagmi'
+import { getUser } from '@/services'
 import { User } from '@/model'
 
 interface IUserContext {
   address: string | undefined
   isConnected: boolean
   user: User | null
-  connect: () => void
-  disconnect: () => void
 }
 
 const ConnectContext = createContext<IUserContext>({
   address: undefined,
   isConnected: false,
   user: null,
-  connect() {},
-  disconnect() {},
 })
 
 export function useConnectContext() {
@@ -37,7 +33,7 @@ interface IProps {
 }
 
 export function ConnectProvider({ children }: IProps) {
-  const { address, isConnected, handleConnect, handleDisconnect } = useConnect()
+  const { isConnected, address } = useAccount()
   const [user, setUser] = useState<User | null>(null)
   const fetchUser = async (userId: string) => {
     try {
@@ -51,7 +47,7 @@ export function ConnectProvider({ children }: IProps) {
   useEffect(() => {
     if (!isConnected) return
     fetchUser('1')
-  }, [isConnected])
+  }, [isConnected, address])
 
   return (
     <ConnectContext.Provider
@@ -59,8 +55,6 @@ export function ConnectProvider({ children }: IProps) {
         address,
         isConnected,
         user,
-        connect: handleConnect,
-        disconnect: handleDisconnect,
       }}
     >
       {children}
