@@ -1,9 +1,19 @@
 import { CONTRACT_ADDRESS, CONTRACT_ABI, ADMIN_ADDRESS } from '@/config'
-import { providers, Contract, ContractReceipt, utils } from 'ethers'
+import { Tag, WeekDay, ShortHour, CreateGroupRequest } from '@/model'
+import {
+  providers,
+  Contract,
+  ContractReceipt,
+  ContractTransaction,
+  utils,
+} from 'ethers'
 
 /**
  * General purpose ethereum helpers
  */
+
+export const getExplorerURL = (hash: string) =>
+  `https://sepolia.scrollscan.com/tx/${hash}`
 
 export const getWeb3 = (ethereum: any) => new providers.Web3Provider(ethereum)
 
@@ -54,6 +64,21 @@ export const connectContract = (): IConnectContract => {
 }
 
 /**
+ * Contract operations
+ */
+
+export const createGroup = async (req: CreateGroupRequest) => {
+  try {
+    const { sessionContract } = connectContract()
+    const tx = await sessionContract!.createGroup(...Object.values(req))
+    const receipt = await tx.wait()
+    return getExplorerURL(receipt.transactionHash)
+  } catch (_) {
+    throw new Error('There was an error creating your group')
+  }
+}
+
+/**
  * Quick operations for admins
  */
 
@@ -69,30 +94,54 @@ export const isAdmin = async () => {
   }
 }
 
-export const createGroup = async () => {
+export const addSuperUser = async () => {
   try {
     const { address, sessionContract } = await isAdmin()
     const isRegistered = await sessionContract!.isUserRegistered(address)
     const txHashes: string[] = []
     if (!isRegistered) {
-      const receipt1: ContractReceipt = await sessionContract!.addGeneralUser(
+      const tx1: ContractTransaction = await sessionContract!.addGeneralUser(
         'admin',
         { value: utils.parseEther('0.01') }
       )
-      const receipt2: ContractReceipt = await sessionContract!.addModerator(
+      const receipt1: ContractReceipt = await tx1.wait()
+      const tx2: ContractTransaction = await sessionContract!.addModerator(
         'admin',
         'admin moderator'
       )
-      const receipt3: ContractReceipt = await sessionContract!.addTherapist(
+      const receipt2: ContractReceipt = await tx2.wait()
+      const tx3: ContractTransaction = await sessionContract!.addTherapist(
         'admin',
         'anxiety',
         '0123',
         'admin therapist'
       )
+      const receipt3: ContractReceipt = await tx3.wait()
       for (const receipt of [receipt1, receipt2, receipt3])
-        txHashes.push(receipt.transactionHash)
+        txHashes.push(getExplorerURL(receipt.transactionHash))
+      return txHashes
+    } else {
+      throw new Error('User is already registered')
     }
   } catch (err) {
     throw err
+  }
+}
+
+export const createTestGroup = async () => {
+  const groupTestData = {
+    title: 'Test Group',
+    tag: Tag.anxiety,
+    day: 'Wednesday' as WeekDay,
+    time: '3 PM' as ShortHour,
+    duration: 10,
+    groupDescription: 'Group created for test purposes',
+  }
+  try {
+    await isAdmin()
+    const txURL = await createGroup(groupTestData)
+    return txURL
+  } catch (_) {
+    throw new Error('There was an error creating your group')
   }
 }
