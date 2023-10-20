@@ -1,4 +1,3 @@
-import '../../../../polyfills'
 import { notFound } from 'next/navigation'
 import { getUser, getChat } from '@/services'
 import HeaderWrapper from '@/components/wrappers/HeaderWrapper'
