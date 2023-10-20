@@ -1,33 +1,52 @@
-/*   // Import Push SDK & Ethers
-  import { PushAPI } from '@pushprotocol/restapi';
-  import { createSocketConnection, EVENTS } from '@pushprotocol/socket';
-  import { ethers } from 'ethers';
+import { MessageWithCID, PushAPI } from '@pushprotocol/restapi'
+import { createSocketConnection, EVENTS } from '@pushprotocol/socket'
+import { providers } from 'ethers'
+import { Socket } from 'dgram'
+import { getSigner, getWeb3 } from '.'
+import { PUSH_ENV } from '@/config'
 
-  // Creating a random signer from a wallet, ideally this is the wallet you will connect
-  const signer = ethers.Wallet.createRandom();
+export class Push {
+  signer: providers.JsonRpcSigner
+  _push: PushAPI | null = null
+  _socket: Socket | null = null
 
-  // Initialize wallet user, pass 'prod' instead of 'staging' for mainnet apps
-  const userAlice = await PushAPI.initialize(signer, { env: 'staging' });
-  
-  // This will be the wallet address of the recipient 
-  const bobWalletAddress = "0x99A08ac6254dcf7ccc37CeC662aeba8eFA666666";
+  constructor() {
+    try {
+      if (!window.ethereum) throw new Error("We couldn't start Push")
+      const provider = getWeb3(window.ethereum)
+      this.signer = getSigner(provider)
+    } catch (err) {
+      throw err
+    }
+  }
 
-  // Send a message to Bob
-  const aliceMessagesBob = await userAlice.chat.send(bobWalletAddress, {
-    content: "Gm gm! It's a me... Mario"
-  });
+  async initPush() {
+    const push = await PushAPI.initialize(this.signer, { env: PUSH_ENV })
+    if (!push) throw new Error('Push is null')
+    this._push = push
+  }
 
-  // Create Socket to Listen to incoming messages
-  const pushSDKSocket = createSocketConnection({
-    user: signer.wallet,
-    socketType: 'chat',
-    socketOptions: { autoConnect: true, reconnectionAttempts: 3 },
-    env: 'staging',
-  });
+  async initSocket() {
+    const pushSDKSocket = createSocketConnection({
+      user: await this.signer.getAddress(),
+      socketType: 'chat',
+      socketOptions: { autoConnect: true, reconnectionAttempts: 3 },
+      env: PUSH_ENV,
+    })
+    if (!pushSDKSocket) throw new Error('PushSDKSocket is null')
+    pushSDKSocket.on(EVENTS.CHAT_RECEIVED_MESSAGE, (message) => {
+      console.log(message)
+    })
+  }
 
-  // React to message payload getting received
-  pushSDKSocket.on(EVENTS.CHAT_RECEIVED_MESSAGE, (message) => {
-    console.log(message);
-  }); */
-
-export const push = () => {}
+  async sendMessage(recipientAddress: string, message: string) {
+    if (!this._push) return
+    const messageSent: MessageWithCID = await this._push.chat.send(
+      recipientAddress,
+      {
+        content: message,
+      }
+    )
+    return messageSent
+  }
+}

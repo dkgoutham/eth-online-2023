@@ -1,5 +1,4 @@
 export * from './group'
 export * from './user'
 export * from './topic'
-export * from './chat'
 export * from './session-contract'
