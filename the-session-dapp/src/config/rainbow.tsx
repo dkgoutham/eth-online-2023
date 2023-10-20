@@ -5,6 +5,8 @@ import {
   getDefaultWallets,
   connectorsForWallets,
   RainbowKitProvider,
+  darkTheme,
+  lightTheme,
 } from '@rainbow-me/rainbowkit'
 import {
   argentWallet,
@@ -14,7 +16,8 @@ import {
 import { configureChains, createConfig, WagmiConfig } from 'wagmi'
 import { scrollSepolia } from 'wagmi/chains'
 import { publicProvider } from 'wagmi/providers/public'
-import { WALLET_CONNECT_ID } from '.'
+import { WALLET_CONNECT_ID, ACCENT_DARK, ACCENT_LIGHT } from '.'
+import { useDarkMode } from '@/hooks'
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [scrollSepolia],
@@ -58,10 +61,19 @@ interface IProps {
 
 export function RainbowProvider({ children }: IProps) {
   const [mounted, setMounted] = useState(false)
+  const isDarkMode = useDarkMode()
   useEffect(() => setMounted(true), [])
   return (
     <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains} appInfo={demoAppInfo}>
+      <RainbowKitProvider
+        theme={
+          isDarkMode
+            ? darkTheme({ accentColor: ACCENT_DARK })
+            : lightTheme({ accentColor: ACCENT_LIGHT })
+        }
+        chains={chains}
+        appInfo={demoAppInfo}
+      >
         {mounted && children}
       </RainbowKitProvider>
     </WagmiConfig>

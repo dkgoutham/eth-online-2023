@@ -18,10 +18,16 @@ export default function Button({
   children,
   onClick,
 }: IProps) {
-  const buttonClass =
-    `rounded-full bg-[--accent] px-8 py-1 text-[1rem] font-bold text-white transition-colors hover:bg-white hover:text-[--accent] active:bg-white active:text-[--accent] disabled:opacity-50 disabled:cursor-not-allowed ${
-      className || ''
-    }`.trim()
+  const buttonClass = [
+    'rounded-full px-8 py-1 text-[1rem] font-bold text-white transition-colors',
+    'bg-[--accent] border-[1px] border-[--accent]',
+    'hover:bg-[--background] hover:text-[--accent] ',
+    'active:bg-[--background] active:text-[--accent]',
+    'disabled:opacity-50 disabled:cursor-not-allowed',
+    className || '',
+  ]
+    .join(' ')
+    .trim()
 
   if (href)
     return (
