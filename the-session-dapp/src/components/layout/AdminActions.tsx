@@ -2,7 +2,7 @@
 
 import { useConnectContext } from '@/store'
 import { ADMIN_ADDRESS } from '@/config'
-import { addSuperUser, createTestGroup } from '@/utils'
+import { addSuperUser, createTestGroup } from '@/services'
 import Button from '../ui/Button'
 
 export default function AdminActions() {
