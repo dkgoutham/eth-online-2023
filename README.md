@@ -8,13 +8,17 @@
 -   [Goutham Denthaje](https://github.com/dkgoutham) - Smart Contract Developer
 -   [Pamela Landgrave](https://github.com/PLandgrave) - UX/UI Designer
 
+## Deployments
+
+-   Scroll Sepolia Contract - [0x3229d697184d26885Aa5D5FF88EDC2952CeA8A10](https://sepolia-blockscout.scroll.io/address/0x3229d697184d26885Aa5D5FF88EDC2952CeA8A10)
+-   DApp - [the-session.vercel.app](https://the-session.vercel.app)
+
 ## Tech Stack
 
 ### Implemented during the Hackathon
 
 -   [**`Figma`**](https://www.figma.com) - UX/UI
--   [**`Push Protocol`**](https://push.org) - Meeting notifications
--   [**`XMTP`**](https://xmtp.org/built-with-xmtp) - Communication
+-   [**`Push Protocol`**](https://push.org) - Communication
 -   [**`Filecoin`**](https://filecoin.io) - Users and meeting data
 -   [**`Safe`**](https://safe.global) - Authentication
 -   [**`Scroll`**](https://scroll.io) - Network and smart contracts
