@@ -1,5 +1,5 @@
 import { CONTRACT_ADDRESS, CONTRACT_ABI, ADMIN_ADDRESS } from '@/config'
-import { providers, Contract, ContractReceipt } from 'ethers'
+import { providers, Contract, ContractReceipt, utils } from 'ethers'
 
 /**
  * General purpose ethereum helpers
@@ -75,8 +75,10 @@ export const createGroup = async () => {
     const isRegistered = await sessionContract!.isUserRegistered(address)
     const txHashes: string[] = []
     if (!isRegistered) {
-      const receipt1: ContractReceipt =
-        await sessionContract!.addGeneralUser('admin')
+      const receipt1: ContractReceipt = await sessionContract!.addGeneralUser(
+        'admin',
+        { value: utils.parseEther('0.01') }
+      )
       const receipt2: ContractReceipt = await sessionContract!.addModerator(
         'admin',
         'admin moderator'

@@ -5,6 +5,7 @@ import HeaderWrapper from '@/components/wrappers/HeaderWrapper'
 import SectionWrapper from '@/components/wrappers/SectionWrapper'
 import GroupsSlider from '@/components/layout/GroupSlider'
 import HomeConnect from '@/components/layout/HomeConnect'
+import AdminActions from '@/components/layout/AdminActions'
 
 export default async function Home() {
   return (
@@ -21,6 +22,7 @@ export default async function Home() {
         </SectionWrapper>
         <SectionWrapper>
           <HomeConnect />
+          <AdminActions />
         </SectionWrapper>
       </MainWrapper>
     </>
