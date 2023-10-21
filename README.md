@@ -19,7 +19,6 @@
 
 -   [**`Figma`**](https://www.figma.com) - UX/UI
 -   [**`Push Protocol`**](https://push.org) - Communication
--   [**`Filecoin`**](https://filecoin.io) - Users and meeting data
 -   [**`Safe`**](https://safe.global) - Authentication
 -   [**`Scroll`**](https://scroll.io) - Network and smart contracts
 -   [**`Next.js`**](https://nextjs.org) - Frontend
@@ -27,6 +26,7 @@
 ### Plans for future implementation
 
 -   [**`The Graph`**](https://thegraph.com) - DApp subgraph
+-   [**`Filecoin`**](https://filecoin.io) - Users and meeting data
 
 ## Flowcharts
 
