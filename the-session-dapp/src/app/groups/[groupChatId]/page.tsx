@@ -16,9 +16,7 @@ interface IProps {
   groupQuote?: string
 }
 
-export default function GroupChat({
-  groupQuote = 'welcome to the group',
-}: IProps) {
+export default function GroupChat({ groupQuote }: IProps) {
   const { isConnected, address } = useConnectContext()
   // TODO set real recipient
   const [recipient] = useState<EthereumAddress>(
@@ -56,7 +54,7 @@ export default function GroupChat({
           <Button onClick={startChat}>Connect Group</Button>
         </MainWrapper>
       ) : (
-        <RightPillWrapper pillQuote={groupQuote}>
+        <RightPillWrapper pillQuote={groupQuote || 'welcome to the group'}>
           <Chat push={push} />
         </RightPillWrapper>
       )}
