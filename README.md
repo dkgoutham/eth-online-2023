@@ -8,7 +8,7 @@
 -   [Goutham Denthaje](https://github.com/dkgoutham) - Smart Contract Developer
 -   [Pamela Landgrave](https://github.com/PLandgrave) - UX/UI Designer
 
-## Worl
+## Live
 
 -   Prototype - [The Session Figma](https://www.figma.com/file/U2QU9ehAqlHjBB9K2CSKFx/the_session?type=design&node-id=0%3A1&mode=design&t=GLPWnMOzHqAa4QVT-1)
 -   Scroll Sepolia Contract - [0x3229d697184d26885Aa5D5FF88EDC2952CeA8A10](https://sepolia.scrollscan.com/address/0x3229d697184d26885Aa5D5FF88EDC2952CeA8A10)
