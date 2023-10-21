@@ -64,7 +64,7 @@ export class Push {
           return {
             text: content,
             time: timestamp,
-            isSender: false,
+            isSender: true,
           }
         })
         .filter((m) => !!m.text)
