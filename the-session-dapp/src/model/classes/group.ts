@@ -1,9 +1,9 @@
 import { TAGLINE } from '@/config'
-import { MeetingSchedule } from '..'
+import { GroupTopic, MeetingSchedule } from '..'
 
 export class Group {
   id: string
-  topic: string
+  topic: GroupTopic
   quote?: string | null
   schedule: MeetingSchedule | null
   image?: string | null
@@ -11,7 +11,7 @@ export class Group {
 
   constructor(
     id: string,
-    topic: string,
+    topic: GroupTopic,
     quote: string | null,
     schedule: MeetingSchedule,
     image?: string | null,

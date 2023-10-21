@@ -9,7 +9,7 @@ import GroupsSlider from '@/components/layout/GroupSlider'
 
 export default async function UserLanding() {
   try {
-    const topics = await getTopics(13)
+    const topics = await getTopics()
     return (
       <>
         <HeaderWrapper>

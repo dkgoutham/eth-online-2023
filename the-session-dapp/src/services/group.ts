@@ -1,6 +1,5 @@
-import { endpoints } from '@/config'
-import { getJSON } from '@/utils'
-import { Group, WeekDay, ShortHour } from '@/model'
+import { Group, WeekDay, ShortHour, GroupTopic } from '@/model'
+import { getTopics } from '.'
 
 export const getGroups = async (count: number): Promise<Group[]> => {
   // TODO Get data from Smart Contract
@@ -16,9 +15,9 @@ export const getGroups = async (count: number): Promise<Group[]> => {
   const hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
   const time = ['AM', 'PM']
   try {
-    const groups = await getJSON(endpoints.groups(count))
+    const groups = await getTopics()
     return groups.map(
-      (group: string, i: number) =>
+      (group: GroupTopic, i: number) =>
         new Group(
           String(i),
           group,
@@ -38,7 +37,10 @@ export const getGroups = async (count: number): Promise<Group[]> => {
   }
 }
 
-export const getGroup = async (id: string, topic: string): Promise<Group> => {
+export const getGroup = async (
+  id: string,
+  topic: GroupTopic
+): Promise<Group> => {
   // TODO Get data from Smart Contract
   const days: WeekDay[] = [
     'Monday',

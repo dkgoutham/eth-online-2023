@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback, memo } from 'react'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
-import { Group } from '@/model'
+import { Group, GroupTopic } from '@/model'
 import { useConnectContext } from '@/store'
 import { getGroup } from '@/services'
 import PillWrapper from '../wrappers/PillWrapper'
@@ -11,7 +11,7 @@ import PillWrapper from '../wrappers/PillWrapper'
 interface IProps {
   bgColor: string
   groupId: string
-  topic: string
+  topic: GroupTopic
 }
 
 function GroupDetailPill({ bgColor, groupId, topic }: IProps) {
@@ -40,7 +40,7 @@ function GroupDetailPill({ bgColor, groupId, topic }: IProps) {
         bgColor={bgColor}
         bgImage={image || undefined}
       >
-        <p className='w-full text-sm leading-3'>{topic}</p>
+        <p className='w-full text-sm leading-3'>{topic.name}</p>
         <h2 className='text-balance w-full text-xl font-bold leading-5'>
           {quote}
         </h2>

@@ -1,13 +1,26 @@
-import { endpoints } from '@/config'
-import { getJSON } from '@/utils'
 import { GroupTopic } from '@/model'
 
-export const getTopics = async (count: number): Promise<GroupTopic[]> => {
+export const getTopics = async (): Promise<GroupTopic[]> => {
   // TODO Get data from Smart Contract
   try {
-    const topics = await getJSON(endpoints.topics(count))
+    const topics = [
+      'anxiety',
+      'depression',
+      'stress management',
+      'grief and loss',
+      'addiction',
+      'codependency',
+      'self esteem',
+      'trauma',
+      'eating disorders',
+      'anger management',
+      'social skills',
+      'mindfulness',
+      'sexual and gender orientation',
+    ]
+
     return topics.map((topic: string, i: number) => ({
-      id: i,
+      id: String(i),
       name: topic,
       slug: topic.toLocaleLowerCase().replace(/ /g, '-'),
     }))
