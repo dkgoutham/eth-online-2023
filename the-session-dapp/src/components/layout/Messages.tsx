@@ -37,23 +37,22 @@ export default function Messages({ push }: IProps) {
       </div>
       <div className='mt-[50px] flex w-full flex-col items-start gap-1 p-3'>
         {isChatLoading && <Spinner />}
-        {chat.length > 0 &&
-          [welcomeMessage, ...chat].map((el: GroupMessage, i: number) => {
-            const classes = [
-              'align-start rounded-full flex flex-col gap-[4px] p-3 text-sm',
-              el.isSender ? 'bg-[--sender] self-end' : 'bg-[--recipient]',
-            ].join(' ')
-            return (
-              <div key={`chat-message-${i}`} className={classes}>
-                {el.text}
-                {/* TODO Add time logic {el.time && (
+        {[welcomeMessage, ...chat].map((el: GroupMessage, i: number) => {
+          const classes = [
+            'align-start rounded-full flex flex-col gap-[4px] p-3 text-sm',
+            el.isSender ? 'bg-[--sender] self-end' : 'bg-[--recipient]',
+          ].join(' ')
+          return (
+            <div key={`chat-message-${i}`} className={classes}>
+              {el.text}
+              {/* TODO Add time logic {el.time && (
                   <time className='align-end text-[10px]'>
                     {getHourAndMinutes(el.time)}
                   </time>
                 )} */}
-              </div>
-            )
-          })}
+            </div>
+          )
+        })}
       </div>
     </section>
   )
