@@ -16,7 +16,8 @@ import {
 import { configureChains, createConfig, WagmiConfig } from 'wagmi'
 import { scrollSepolia } from 'wagmi/chains'
 import { publicProvider } from 'wagmi/providers/public'
-import { WALLET_CONNECT_ID, ACCENT_DARK, ACCENT_LIGHT } from '.'
+import { WALLET_CONNECT_ID } from '.'
+import { AccentColors } from '@/model'
 import { useDarkMode } from '@/hooks'
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
@@ -68,8 +69,8 @@ export function RainbowProvider({ children }: IProps) {
       <RainbowKitProvider
         theme={
           isDarkMode
-            ? darkTheme({ accentColor: ACCENT_DARK })
-            : lightTheme({ accentColor: ACCENT_LIGHT })
+            ? darkTheme({ accentColor: AccentColors.DARK })
+            : lightTheme({ accentColor: AccentColors.LIGHT })
         }
         chains={chains}
         appInfo={demoAppInfo}

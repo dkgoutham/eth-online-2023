@@ -22,11 +22,10 @@ export default function GroupChat() {
       await push.initPush()
       await push.initSocket(address)
       setPush(push)
-      setPushIsLoading(false)
     } catch (err) {
-      setPushIsLoading(false)
       alert(err)
     }
+    setPushIsLoading(false)
   }
 
   if (!isConnected) return <div>Please connect your wallet</div>
@@ -37,12 +36,10 @@ export default function GroupChat() {
         <Nav />
       </HeaderWrapper>
       <MainWrapper>
-        {!push ? (
-          pushIsLoading ? (
-            <Spinner />
-          ) : (
-            <Button onClick={startChat}>Connect Group</Button>
-          )
+        {pushIsLoading ? (
+          <Spinner />
+        ) : !push ? (
+          <Button onClick={startChat}>Connect Group</Button>
         ) : (
           <Chat push={push} />
         )}

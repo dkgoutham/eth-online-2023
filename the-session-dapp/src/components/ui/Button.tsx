@@ -8,6 +8,8 @@ interface IProps {
   className?: string | undefined
   type?: 'button' | 'submit' | 'reset'
   onClick?: MouseEventHandler<HTMLButtonElement>
+  onMouseEnter?: MouseEventHandler<HTMLButtonElement>
+  onMouseLeave?: MouseEventHandler<HTMLButtonElement>
 }
 
 export default function Button({
@@ -17,6 +19,7 @@ export default function Button({
   disabled,
   children,
   onClick,
+  ...props
 }: IProps) {
   const buttonClass = [
     'rounded-full px-8 py-1 text-[1rem] font-bold text-white transition-colors',
@@ -42,6 +45,7 @@ export default function Button({
       disabled={disabled}
       onClick={onClick}
       className={buttonClass}
+      {...props}
     >
       {children}
     </button>

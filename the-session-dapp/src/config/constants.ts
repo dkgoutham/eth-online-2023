@@ -15,5 +15,10 @@ export const TAGLINE = 'we are feeling the same'
 /**
  * Colors
  */
-export const ACCENT_LIGHT = '#034aa6'
-export const ACCENT_DARK = '#f2622e'
+export const APP_WHITE = '#fff'
+export const APP_ORANGE = '#f2622e'
+export const APP_BLUE = '#034aa6'
+export const APP_BLACK = '#222'
+export const APP_GRAY = '#666'
+export const APP_ACCENT_LIGHT = APP_BLUE
+export const APP_ACCENT_DARK = APP_ORANGE

@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import { IMessageIPFS } from '@pushprotocol/restapi'
 import { Push } from '@/utils'
-import Button from '../ui/Button'
+import SendMessageButton from './SendMessageButton'
 import Spinner from '../ui/Spinner'
 
 interface IProps {
@@ -64,7 +64,7 @@ export default function Chat({ push }: IProps) {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
-        <Button type='submit'>Send</Button>
+        <SendMessageButton />
       </form>
     </>
   )
