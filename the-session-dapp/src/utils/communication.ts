@@ -85,7 +85,7 @@ export class Push {
     this.messages.push({
       text: message,
       time: messageSent!.timestamp || 0,
-      isSender: false,
+      isSender: true,
     })
   }
 
