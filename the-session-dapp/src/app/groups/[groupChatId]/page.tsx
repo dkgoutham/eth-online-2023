@@ -1,62 +1,52 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { notFound } from 'next/navigation'
-import { getUser } from '@/services'
+import { useState } from 'react'
 import { Push } from '@/utils'
 import { useConnectContext } from '@/store'
 import HeaderWrapper from '@/components/wrappers/HeaderWrapper'
+import MainWrapper from '@/components/wrappers/MainWrapper'
+import Button from '@/components/ui/Button'
+import Spinner from '@/components/ui/Spinner'
 import Nav from '@/components/layout/Nav'
 import Chat from '@/components/layout/Chat'
-import MainWrapper from '@/components/wrappers/MainWrapper'
-import { useCallback } from 'react'
-import { User } from '@/model'
 
-export default function GroupChat({
-  params,
-}: {
-  params: { groupChatId: string }
-}) {
-  const [user, setUser] = useState<User | undefined>()
-  const [push] = useState<Push>(new Push())
-  const { isConnected } = useConnectContext()
-  const handleGetUser = useCallback(async () => {
-    const user = await getUser('1')
-    setUser(user)
-  }, [])
-  const handleChat = useCallback(async () => {
+export default function GroupChat() {
+  const { isConnected, address } = useConnectContext()
+  const [push, setPush] = useState<Push | null>(null)
+  const [pushIsLoading, setPushIsLoading] = useState<boolean>(false)
+  const startChat = async () => {
+    setPushIsLoading(true)
+    if (!isConnected || !address) return
     try {
+      const push = new Push()
       await push.initPush()
-      await push.initSocket()
+      await push.initSocket(address)
+      setPush(push)
+      setPushIsLoading(false)
     } catch (err) {
+      setPushIsLoading(false)
       alert(err)
     }
-  }, [])
-
-  useEffect(() => {
-    handleGetUser()
-  }, [handleGetUser])
-
-  useEffect(() => {
-    if (!isConnected || !user) return
-    handleChat()
-  }, [handleChat, isConnected, user])
-
-  if (!isConnected || !user) return <div>Please connect your wallet</div>
-
-  try {
-    return (
-      <>
-        <HeaderWrapper>
-          <Nav user={user} />
-        </HeaderWrapper>
-        <MainWrapper>
-          <div>{params.groupChatId}</div>
-          <Chat />
-        </MainWrapper>
-      </>
-    )
-  } catch (err) {
-    notFound()
   }
+
+  if (!isConnected) return <div>Please connect your wallet</div>
+
+  return (
+    <>
+      <HeaderWrapper>
+        <Nav />
+      </HeaderWrapper>
+      <MainWrapper>
+        {!push ? (
+          pushIsLoading ? (
+            <Spinner />
+          ) : (
+            <Button onClick={startChat}>Connect Group</Button>
+          )
+        ) : (
+          <Chat push={push} />
+        )}
+      </MainWrapper>
+    </>
+  )
 }

@@ -1,14 +1,13 @@
-import { MessageWithCID, PushAPI } from '@pushprotocol/restapi'
+import { IMessageIPFS, MessageWithCID, PushAPI } from '@pushprotocol/restapi'
 import { createSocketConnection, EVENTS } from '@pushprotocol/socket'
 import { providers } from 'ethers'
-import { Socket } from 'dgram'
 import { getSigner, getWeb3 } from '.'
 import { PUSH_ENV } from '@/config'
 
 export class Push {
   signer: providers.JsonRpcSigner
-  _push: PushAPI | null = null
-  _socket: Socket | null = null
+  user: PushAPI | null = null
+  _socket: unknown | null = null
 
   constructor() {
     try {
@@ -23,25 +22,26 @@ export class Push {
   async initPush() {
     const push = await PushAPI.initialize(this.signer, { env: PUSH_ENV })
     if (!push) throw new Error('Push is null')
-    this._push = push
+    this.user = push
   }
 
-  async initSocket() {
+  async initSocket(address: string) {
     const pushSDKSocket = createSocketConnection({
-      user: await this.signer.getAddress(),
+      user: address,
       socketType: 'chat',
       socketOptions: { autoConnect: true, reconnectionAttempts: 3 },
       env: PUSH_ENV,
     })
-    if (!pushSDKSocket) throw new Error('PushSDKSocket is null')
+    if (!pushSDKSocket) throw new Error('Push Socket is null')
     pushSDKSocket.on(EVENTS.CHAT_RECEIVED_MESSAGE, (message) => {
       console.log(message)
     })
+    this._socket = pushSDKSocket
   }
 
   async sendMessage(recipientAddress: string, message: string) {
-    if (!this._push) return
-    const messageSent: MessageWithCID = await this._push.chat.send(
+    if (!this.user) return
+    const messageSent: MessageWithCID = await this.user.chat.send(
       recipientAddress,
       {
         content: message,
@@ -49,4 +49,11 @@ export class Push {
     )
     return messageSent
   }
+
+  async getChat(recipient: string): Promise<IMessageIPFS[]> {
+    if (!this.user) return []
+    const chat = await this.user.chat.history(recipient)
+    return chat
+  }
+  // TODO Group Logic
 }

@@ -13,8 +13,10 @@
   --orange: #f2622e;
   --orange-0: #f2622e00;
   --blue: #034aa6;
+  --blue-0: #034aa600;
   --black: #222;
   --black-0: #2220;
+  --gray: #666;
   --foreground: var(--white);
   --foreground-0: var(--white-0);
   --background: var(--orange);
@@ -30,6 +32,7 @@
     --background: var(--black);
     --background-0: var(--black-0);
     --accent: var(--orange);
+    --accent-0: var(--orange-0);
     --accent-hover: var(--white);
   }
 }
