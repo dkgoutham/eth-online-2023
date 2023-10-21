@@ -10,8 +10,8 @@ export default function UserActions() {
   const { isConnected, user, address } = useConnectContext()
   const { openAccountModal } = useAccountModal()
 
-  if (user && isConnected) {
-    const { id, username, avatar, notifications } = user
+  if (user && isConnected && openAccountModal) {
+    const { avatar, notifications } = user
     return (
       <li
         className='flex cursor-pointer items-center gap-4'

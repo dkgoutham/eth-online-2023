@@ -1,55 +1,32 @@
 'use client'
 
-import { useState, useEffect, useCallback } from 'react'
-import { IMessageIPFS } from '@pushprotocol/restapi'
+import { useState } from 'react'
 import { Push } from '@/utils'
+import Messages from './Messages'
 import SendMessageButton from './SendMessageButton'
-import Spinner from '../ui/Spinner'
 
 interface IProps {
   push: Push
 }
 
 export default function Chat({ push }: IProps) {
-  // TODO set real recipient
-  const [chat, setChat] = useState<IMessageIPFS[]>([])
-  const [isChatLoading, setIsChatLoading] = useState<boolean>(false)
-  const [recipient] = useState<string>(
-    '0x9400aF521D90d40eCDDC69E207d442908ea3d4Ac'
-  )
   const [message, setMessage] = useState<string>('')
-  const handleGetMessages = useCallback(async () => {
-    try {
-      setIsChatLoading(true)
-      const chat = await push.getChat(recipient)
-      setChat(chat.reverse())
-      setIsChatLoading(false)
-    } catch (err) {
-      setIsChatLoading(false)
-      setChat([])
-      alert(err)
-    }
-  }, [push, recipient])
+  const [isSendingMessage, setIsSendingMessage] = useState<boolean>(false)
   const handleSendMessage = async () => {
-    const sent = await push.sendMessage(recipient, message)
-    setMessage('')
+    setIsSendingMessage(true)
+    try {
+      const sent = await push.sendMessage(message)
+      setIsSendingMessage(false)
+      setMessage('')
+    } catch (err) {
+      setIsSendingMessage(false)
+      alert('Ops! There was a problem sending your message')
+    }
   }
-
-  useEffect(() => {
-    handleGetMessages()
-  }, [handleGetMessages])
 
   return (
     <>
-      <div className='mb-12 w-full rounded-xl border-[1px] border-[--black] p-12 dark:border-[--white]'>
-        {isChatLoading && <Spinner />}
-        {chat.length > 0 &&
-          chat.map((el: IMessageIPFS, i: number) => {
-            const { messageObj } = el
-            // @ts-ignore
-            return <div key={`chat-message-${i}`}>{messageObj.content}</div>
-          })}
-      </div>
+      <Messages push={push} />
       <form
         className='flex w-full items-center justify-center gap-4'
         onSubmit={async (e) => {
@@ -57,14 +34,14 @@ export default function Chat({ push }: IProps) {
           await handleSendMessage()
         }}
       >
-        <input
+        <textarea
           placeholder='message'
           id='message'
-          className='basis-full rounded-full border-[1px] border-[--accent] bg-[--background] py-3 px-6'
+          className='flex h-full basis-full justify-center overflow-y-scroll rounded-[30px] border-[1px] border-[--black] dark:border-[--white] bg-[--background] px-6 py-4'
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
-        <SendMessageButton />
+        <SendMessageButton isLoading={isSendingMessage} />
       </form>
     </>
   )

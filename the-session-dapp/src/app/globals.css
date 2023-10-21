@@ -11,8 +11,10 @@
   --white: #fff;
   --white-0: #fff0;
   --orange: #f2622e;
+  --sender: #ffbba2;
   --orange-0: #f2622e00;
   --blue: #034aa6;
+  --recipient: #afd2ff;
   --blue-0: #034aa600;
   --black: #222;
   --black-0: #2220;
@@ -27,6 +29,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
+    --sender: var(--orange);
+    --recipient: var(--blue);
     --foreground: var(--white);
     --foreground-0: var(--white-0);
     --background: var(--black);
@@ -35,6 +39,10 @@
     --accent-0: var(--orange-0);
     --accent-hover: var(--white);
   }
+}
+
+::-webkit-resizer {
+  display: none;
 }
 
 body {

@@ -14,3 +14,9 @@ export type CreateGroupRequest = {
   duration: number
   groupDescription: string
 }
+
+export type GroupMessage = {
+  text: string
+  time: number
+  isSender: boolean
+}
