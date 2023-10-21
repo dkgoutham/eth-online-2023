@@ -51,16 +51,16 @@ export default function Chat({ push }: IProps) {
           })}
       </div>
       <form
-        className='flex items-center justify-center gap-2'
+        className='flex w-full items-center justify-center gap-4'
         onSubmit={async (e) => {
           e.preventDefault()
           await handleSendMessage()
         }}
       >
-        <label htmlFor='message'>Message</label>
         <input
+          placeholder='message'
           id='message'
-          className='rounded-full p-3 text-black'
+          className='basis-full rounded-full border-[1px] border-[--accent] bg-[--background] py-3 px-6'
           value={message}
           onChange={(e) => setMessage(e.target.value)}
         />
