@@ -11,7 +11,7 @@
 ## Worl
 
 -   Prototype - [The Session Figma](https://www.figma.com/file/U2QU9ehAqlHjBB9K2CSKFx/the_session?type=design&node-id=0%3A1&mode=design&t=GLPWnMOzHqAa4QVT-1)
--   Scroll Sepolia Contract - [0x3229d697184d26885Aa5D5FF88EDC2952CeA8A10](https://sepolia-blockscout.scroll.io/address/0x3229d697184d26885Aa5D5FF88EDC2952CeA8A10)
+-   Scroll Sepolia Contract - [0x3229d697184d26885Aa5D5FF88EDC2952CeA8A10](https://sepolia.scrollscan.com/address/0x3229d697184d26885Aa5D5FF88EDC2952CeA8A10)
 -   DApp - [the-session.vercel.app](https://the-session.vercel.app)
 
 ## Tech Stack
