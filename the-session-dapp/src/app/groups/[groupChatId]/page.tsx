@@ -12,11 +12,7 @@ import Nav from '@/components/layout/Nav'
 import Chat from '@/components/layout/Chat'
 import RightPillWrapper from '@/components/wrappers/RightPillWrapper'
 
-interface IProps {
-  groupQuote?: string
-}
-
-export default function GroupChat({ groupQuote }: IProps) {
+export default function GroupChat() {
   const { isConnected, address } = useConnectContext()
   // TODO set real recipient
   const [recipient] = useState<EthereumAddress>(
@@ -54,7 +50,7 @@ export default function GroupChat({ groupQuote }: IProps) {
           <Button onClick={startChat}>Connect Group</Button>
         </MainWrapper>
       ) : (
-        <RightPillWrapper pillQuote={groupQuote || 'welcome to the group'}>
+        <RightPillWrapper pillQuote={'welcome to the group'}>
           <Chat push={push} />
         </RightPillWrapper>
       )}
